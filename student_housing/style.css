@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #chart {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .bar {
+    fill: steelblue;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  .label {
+    font-size: 12px;
+    fill: black;
+  }
+  
