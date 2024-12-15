@@ -1,1 +1,2 @@
-Test
+- The data used is contained within the 'data' folder
+- The 'src' folder contains the script files for the elements as well as the html and css file that contains the layout of the website
