@@ -30,6 +30,7 @@ d3.csv(dataFile).then(data => {
 
     data.forEach(d => {
         const svg = d3.select("#chart").append("svg")
+            .attr("class", "radar-chart-svg") // Add a specific class
             .attr("viewBox", `0 0 ${width * 2} ${height * 2}`) // Increase viewBox size
             .attr("preserveAspectRatio", "xMidYMid meet")
             .attr("style", "width: 100%; height: auto; max-width: 300px; max-height: 300px; display: block; margin: auto; font: 10px sans-serif;")
