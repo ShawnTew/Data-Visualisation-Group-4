@@ -11,7 +11,7 @@ const csvUrl = '../data/combined_station_fares_13cities.csv'; // Path to your CS
         <br><br>
         <label>Time by Train (Fare Rate):</label>
         <input type="range" id="timeSlider" min="0" max="300" value="150" step="10">
-        <span id="timeValue">150</span> km
+        <span id="timeValue">150</span>
         <br><br>
         <button id="applyFilter">Apply Filter</button>
         <div id="results" style="margin-top: 20px;">
