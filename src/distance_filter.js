@@ -1,4 +1,4 @@
-const csvUrl = '../data/combined_station_fares_13cities.csv'; // Path to your CSV file
+const csvUrl = '../data/combined_station_fares_13cities.csv';
 
 (function createFilterUI() {
     const container = document.getElementById("distance-filter");
