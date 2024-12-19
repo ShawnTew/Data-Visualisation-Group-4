@@ -2,25 +2,22 @@ const container = document.getElementById("map-container");
 const width = container.offsetWidth || 800; 
 const height = 500;
 
-const svg = d3.select("#map-plot")
+const mapSvg = d3.select("#map-plot")
     .attr("width", width)
-    .attr("height", height)
+    .attr("height", height);
 
-const g = svg.append("g");
+const mapGroup = mapSvg.append("g");
 
-// Fetch the GeoJSON File
 fetch('../data/gemeente_map_simplified10m.geojson')
     .then(response => response.json())
     .then(geojsonData => {
-
         const projection = d3.geoIdentity()
             .reflectY(true)
             .fitSize([width, height], geojsonData);
 
         const pathGenerator = d3.geoPath().projection(projection);
 
-        // Step 4: Render GeoJSON
-        g.selectAll(".geojson-path")
+        mapGroup.selectAll(".geojson-path")
             .data(geojsonData.features)
             .enter()
             .append("path")
@@ -31,12 +28,10 @@ fetch('../data/gemeente_map_simplified10m.geojson')
     })
     .catch(error => console.error("Error loading GeoJSON:", error));
 
-// Add Zoom Behavior
 const zoom = d3.zoom()
     .scaleExtent([1, 8])
     .on("zoom", (event) => {
-        g.attr("transform", event.transform);
+        mapGroup.attr("transform", event.transform);
     });
 
-// Apply zoom behavior to the SVG
-svg.call(zoom);
+mapSvg.call(zoom);
