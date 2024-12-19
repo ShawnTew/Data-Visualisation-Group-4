@@ -4,13 +4,15 @@ const width = 1000 - margin.left - margin.right;
 const height = 400 - margin.top - margin.bottom;
 
 // Tooltip for Parallel Coordinates
-const tooltip = d3.select("#tooltip");
+const tooltip = d3.select("#parallel-plot-container #tooltip");
+
 
 // Colors for legend
 const colors = d3.schemeCategory10;
 
 // Create SVG
-const svg = d3.select("#parallel-plot")
+const svg = d3.select("#parallel-plot-container #parallel-plot")
+
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -38,7 +40,7 @@ const xScale = d3.scalePoint()
 
 // Adjust SVG height to accommodate wrapped labels
 const adjustedHeight = height + 100; // Extra space for labels
-d3.select("#parallel-plot svg")
+d3.select("#parallel-plot-container #parallel-plot")
   .attr("height", adjustedHeight + margin.top + margin.bottom);
 
 // Draw each axis and wrapped labels below
