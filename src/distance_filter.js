@@ -1,4 +1,4 @@
-const csvUrl = '../data/combined_station_fares.csv';
+const csvUrl = '../data/combined_station_fares_21cities.csv';
 
 (function createFilterUI() {
     const container = document.getElementById("distance-filter");
@@ -68,6 +68,11 @@ const csvUrl = '../data/combined_station_fares.csv';
         });
 
         updateTable(filteredData);
+
+        // Zoom the map to the preferred city
+        if (preferredCity) {
+            zoomToMunicipality(preferredCity); // Call the zoom function from gemeente_map.js
+        }
     };
 
     // Update table with filtered data
@@ -79,8 +84,8 @@ const csvUrl = '../data/combined_station_fares.csv';
             return;
         }
 
-            // Sort data by fareRate in ascending order
-    const sortedData = filteredData.sort((a, b) => a.fareRate - b.fareRate);
+        // Sort data by fareRate in ascending order
+        const sortedData = filteredData.sort((a, b) => a.fareRate - b.fareRate);
 
         sortedData.forEach(row => {
             const tr = document.createElement("tr");

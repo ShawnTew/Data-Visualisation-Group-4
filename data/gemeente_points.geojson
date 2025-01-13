@@ -1,0 +1,29 @@
+{
+"type": "FeatureCollection",
+"name": "gementee_points",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::28992" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 2.0, "statcode": "GM0014", "jrstatcode": "2024GM0014", "statnaam": "Groningen", "rubriek": "gemeente", "id": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 233714.000000007450581, 582460.0 ] } },
+{ "type": "Feature", "properties": { "fid": 16.0, "statcode": "GM0080", "jrstatcode": "2024GM0080", "statnaam": "Leeuwarden", "rubriek": "gemeente", "id": 16.0 }, "geometry": { "type": "Point", "coordinates": [ 182426.468438666313887, 573862.194820407778025 ] } },
+{ "type": "Feature", "properties": { "fid": 32.0, "statcode": "GM0150", "jrstatcode": "2024GM0150", "statnaam": "Deventer", "rubriek": "gemeente", "id": 32.0 }, "geometry": { "type": "Point", "coordinates": [ 213322.0, 476060.99999999627471 ] } },
+{ "type": "Feature", "properties": { "fid": 33.0, "statcode": "GM0153", "jrstatcode": "2024GM0153", "statnaam": "Enschede", "rubriek": "gemeente", "id": 33.0 }, "geometry": { "type": "Point", "coordinates": [ 256220.99999999627471, 471065.0 ] } },
+{ "type": "Feature", "properties": { "fid": 48.0, "statcode": "GM0193", "jrstatcode": "2024GM0193", "statnaam": "Zwolle", "rubriek": "gemeente", "id": 48.0 }, "geometry": { "type": "Point", "coordinates": [ 204446.0, 502709.99999999627471 ] } },
+{ "type": "Feature", "properties": { "fid": 51.0, "statcode": "GM0202", "jrstatcode": "2024GM0202", "statnaam": "Arnhem", "rubriek": "gemeente", "id": 51.0 }, "geometry": { "type": "Point", "coordinates": [ 189998.000000007450581, 445006.0 ] } },
+{ "type": "Feature", "properties": { "fid": 61.0, "statcode": "GM0228", "jrstatcode": "2024GM0228", "statnaam": "Ede", "rubriek": "gemeente", "id": 61.0 }, "geometry": { "type": "Point", "coordinates": [ 179784.0, 455170.000000007450581 ] } },
+{ "type": "Feature", "properties": { "fid": 74.0, "statcode": "GM0268", "jrstatcode": "2024GM0268", "statnaam": "Nijmegen", "rubriek": "gemeente", "id": 74.0 }, "geometry": { "type": "Point", "coordinates": [ 185742.000000007450581, 427990.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 83.0, "statcode": "GM0289", "jrstatcode": "2024GM0289", "statnaam": "Wageningen", "rubriek": "gemeente", "id": 83.0 }, "geometry": { "type": "Point", "coordinates": [ 174091.00000000372529, 442866.0 ] } },
+{ "type": "Feature", "properties": { "fid": 105.0, "statcode": "GM0344", "jrstatcode": "2024GM0344", "statnaam": "Utrecht", "rubriek": "gemeente", "id": 105.0 }, "geometry": { "type": "Point", "coordinates": [ 134133.00000000372529, 456551.99999999627471 ] } },
+{ "type": "Feature", "properties": { "fid": 115.0, "statcode": "GM0363", "jrstatcode": "2024GM0363", "statnaam": "Amsterdam", "rubriek": "gemeente", "id": 115.0 }, "geometry": { "type": "Point", "coordinates": [ 121748.0, 487343.000000007450581 ] } },
+{ "type": "Feature", "properties": { "fid": 123.0, "statcode": "GM0392", "jrstatcode": "2024GM0392", "statnaam": "Haarlem", "rubriek": "gemeente", "id": 123.0 }, "geometry": { "type": "Point", "coordinates": [ 104356.0, 488161.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 129.0, "statcode": "GM0402", "jrstatcode": "2024GM0402", "statnaam": "Hilversum", "rubriek": "gemeente", "id": 129.0 }, "geometry": { "type": "Point", "coordinates": [ 139521.0, 469975.000000007450581 ] } },
+{ "type": "Feature", "properties": { "fid": 154.0, "statcode": "GM0503", "jrstatcode": "2024GM0503", "statnaam": "Delft", "rubriek": "gemeente", "id": 154.0 }, "geometry": { "type": "Point", "coordinates": [ 84732.00000000372529, 446093.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 165.0, "statcode": "GM0546", "jrstatcode": "2024GM0546", "statnaam": "Leiden", "rubriek": "gemeente", "id": 165.0 }, "geometry": { "type": "Point", "coordinates": [ 93067.0, 463006.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 176.0, "statcode": "GM0599", "jrstatcode": "2024GM0599", "statnaam": "Rotterdam", "rubriek": "gemeente", "id": 176.0 }, "geometry": { "type": "Point", "coordinates": [ 92127.0, 437007.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 212.0, "statcode": "GM0758", "jrstatcode": "2024GM0758", "statnaam": "Breda", "rubriek": "gemeente", "id": 212.0 }, "geometry": { "type": "Point", "coordinates": [ 111880.00000000372529, 399089.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 217.0, "statcode": "GM0772", "jrstatcode": "2024GM0772", "statnaam": "Eindhoven", "rubriek": "gemeente", "id": 217.0 }, "geometry": { "type": "Point", "coordinates": [ 159561.0, 384577.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 239.0, "statcode": "GM0855", "jrstatcode": "2024GM0855", "statnaam": "Tilburg", "rubriek": "gemeente", "id": 239.0 }, "geometry": { "type": "Point", "coordinates": [ 132590.0, 398396.0 ] } },
+{ "type": "Feature", "properties": { "fid": 255.0, "statcode": "GM0917", "jrstatcode": "2024GM0917", "statnaam": "Heerlen", "rubriek": "gemeente", "id": 255.0 }, "geometry": { "type": "Point", "coordinates": [ 195393.000000007450581, 323747.0 ] } },
+{ "type": "Feature", "properties": { "fid": 257.0, "statcode": "GM0935", "jrstatcode": "2024GM0935", "statnaam": "Maastricht", "rubriek": "gemeente", "id": 257.0 }, "geometry": { "type": "Point", "coordinates": [ 177089.0, 318918.00000000372529 ] } },
+{ "type": "Feature", "properties": { "fid": 343.0, "statcode": "GM0363", "jrstatcode": "2024GM0363", "statnaam": "Amsterdam", "rubriek": "gemeente", "id": 343.0 }, "geometry": { "type": "Point", "coordinates": [ 130343.806420210748911, 480509.481271520256996 ] } }
+]
+}
