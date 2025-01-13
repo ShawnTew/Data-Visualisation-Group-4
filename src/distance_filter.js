@@ -1,4 +1,4 @@
-const csvUrl = '../data/combined_station_fares_13cities.csv';
+const csvUrl = '../data/combined_station_fares.csv';
 
 (function createFilterUI() {
     const container = document.getElementById("distance-filter");
@@ -6,10 +6,10 @@ const csvUrl = '../data/combined_station_fares_13cities.csv';
     // Add filter UI
     container.innerHTML = `
         <h2>Train Station Distance Filter</h2>
-        <label>Preferred University:</label>
+        <label>Preferred Municipality:</label>
         <input type="text" id="preferredCity" placeholder="e.g., Delft">
         <br><br>
-        <label>Time by Train (Fare Rate):</label>
+        <label>Distance (Fare Rate):</label>
         <input type="range" id="timeSlider" min="0" max="300" value="150" step="10">
         <span id="timeValue">150</span>
         <br><br>
@@ -20,9 +20,9 @@ const csvUrl = '../data/combined_station_fares_13cities.csv';
                 <thead>
                     <tr>
                         <th>From Station</th>
-                        <th>From City</th>
+                        <th>From Municipality</th>
                         <th>To Station</th>
-                        <th>To City</th>
+                        <th>To Municipality</th>
                         <th>Fare Rate</th>
                     </tr>
                 </thead>
@@ -79,7 +79,10 @@ const csvUrl = '../data/combined_station_fares_13cities.csv';
             return;
         }
 
-        filteredData.forEach(row => {
+            // Sort data by fareRate in ascending order
+    const sortedData = filteredData.sort((a, b) => a.fareRate - b.fareRate);
+
+        sortedData.forEach(row => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
                 <td>${row.fromStation}</td>

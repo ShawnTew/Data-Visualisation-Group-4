@@ -8,7 +8,7 @@ const mapSvg = d3.select("#map-plot")
 
 const mapGroup = mapSvg.append("g");
 
-fetch('../data/gemeente_map_simplified10m.geojson')
+fetch('../data/province_map_simplified10m.geojson')
     .then(response => response.json())
     .then(geojsonData => {
         const projection = d3.geoIdentity()
