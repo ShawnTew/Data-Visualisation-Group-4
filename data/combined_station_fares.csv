@@ -1,0 +1,758 @@
+From_Station,From_Country,To_Station,To_Country,Fare_Rate
+Amersfoort Centraal,NL,Arnhem Centraal,NL,51
+Breda,NL,Arnhem Centraal,NL,105
+Bunnik,NL,Arnhem Centraal,NL,50
+Driebergen-Zeist,NL,Arnhem Centraal,NL,46
+Diemen,NL,Arnhem Centraal,NL,89
+Dronten,NL,Arnhem Centraal,NL,108
+Delft,NL,Arnhem Centraal,NL,127
+Deventer,NL,Arnhem Centraal,NL,45
+Ede-Wageningen,NL,Arnhem Centraal,NL,17
+Ede Centrum,NL,Arnhem Centraal,NL,19
+Eindhoven Centraal,NL,Arnhem Centraal,NL,94
+Enschede,NL,Arnhem Centraal,NL,82
+Groningen,NL,Arnhem Centraal,NL,182
+Haarlem,NL,Arnhem Centraal,NL,115
+Heerlen,NL,Arnhem Centraal,NL,27
+Hilversum,NL,Arnhem Centraal,NL,67
+Leiden Centraal,NL,Arnhem Centraal,NL,108
+Leeuwarden,NL,Arnhem Centraal,NL,171
+Maarn,NL,Arnhem Centraal,NL,38
+Nijmegen,NL,Arnhem Centraal,NL,19
+Rheden,NL,Arnhem Centraal,NL,10
+Rotterdam Centraal,NL,Arnhem Centraal,NL,114
+Tilburg,NL,Arnhem Centraal,NL,84
+Utrecht Centraal,NL,Arnhem Centraal,NL,58
+Vlissingen,NL,Arnhem Centraal,NL,204
+Zwolle,NL,Arnhem Centraal,NL,76
+Arnhem Centraal,NL,Amsterdam Centraal,NL,96
+Amersfoort Centraal,NL,Amsterdam Centraal,NL,45
+Breda,NL,Amsterdam Centraal,NL,130
+Bunnik,NL,Amsterdam Centraal,NL,47
+Driebergen-Zeist,NL,Amsterdam Centraal,NL,51
+Diemen,NL,Amsterdam Centraal,NL,7
+Dronten,NL,Amsterdam Centraal,NL,79
+Delft,NL,Amsterdam Centraal,NL,72
+Deventer,NL,Amsterdam Centraal,NL,103
+Ede-Wageningen,NL,Amsterdam Centraal,NL,79
+Ede Centrum,NL,Amsterdam Centraal,NL,77
+Eindhoven Centraal,NL,Amsterdam Centraal,NL,119
+Enschede,NL,Amsterdam Centraal,NL,159
+Groningen,NL,Amsterdam Centraal,NL,217
+Haarlem,NL,Amsterdam Centraal,NL,19
+Heerlen,NL,Amsterdam Centraal,NL,123
+Hilversum,NL,Amsterdam Centraal,NL,29
+Leiden Centraal,NL,Amsterdam Centraal,NL,48
+Leeuwarden,NL,Amsterdam Centraal,NL,206
+Maarn,NL,Amsterdam Centraal,NL,59
+Nijmegen,NL,Amsterdam Centraal,NL,115
+Rheden,NL,Amsterdam Centraal,NL,106
+Rotterdam Centraal,NL,Amsterdam Centraal,NL,86
+Tilburg,NL,Amsterdam Centraal,NL,109
+Utrecht Centraal,NL,Amsterdam Centraal,NL,39
+Vlissingen,NL,Amsterdam Centraal,NL,219
+Zwolle,NL,Amsterdam Centraal,NL,111
+Arnhem Centraal,NL,Breda,NL,105
+Amersfoort Centraal,NL,Breda,NL,112
+Bunnik,NL,Breda,NL,97
+Driebergen-Zeist,NL,Breda,NL,101
+Diemen,NL,Breda,NL,129
+Dronten,NL,Breda,NL,189
+Delft,NL,Breda,NL,64
+Deventer,NL,Breda,NL,150
+Ede-Wageningen,NL,Breda,NL,122
+Ede Centrum,NL,Breda,NL,124
+Eindhoven Centraal,NL,Breda,NL,58
+Enschede,NL,Breda,NL,187
+Groningen,NL,Breda,NL,284
+Haarlem,NL,Breda,NL,117
+Heerlen,NL,Breda,NL,132
+Hilversum,NL,Breda,NL,109
+Leiden Centraal,NL,Breda,NL,88
+Leeuwarden,NL,Breda,NL,273
+Maarn,NL,Breda,NL,109
+Nijmegen,NL,Breda,NL,86
+Rheden,NL,Breda,NL,115
+Rotterdam Centraal,NL,Breda,NL,50
+Tilburg,NL,Breda,NL,21
+Utrecht Centraal,NL,Breda,NL,91
+Vlissingen,NL,Breda,NL,99
+Zwolle,NL,Breda,NL,178
+Arnhem Centraal,NL,Bunnik,NL,50
+Amersfoort Centraal,NL,Bunnik,NL,29
+Breda,NL,Bunnik,NL,97
+Driebergen-Zeist,NL,Bunnik,NL,4
+Diemen,NL,Bunnik,NL,46
+Dronten,NL,Bunnik,NL,106
+Delft,NL,Bunnik,NL,77
+Deventer,NL,Bunnik,NL,87
+Ede-Wageningen,NL,Bunnik,NL,33
+Ede Centrum,NL,Bunnik,NL,35
+Eindhoven Centraal,NL,Bunnik,NL,86
+Enschede,NL,Bunnik,NL,132
+Groningen,NL,Bunnik,NL,201
+Haarlem,NL,Bunnik,NL,66
+Heerlen,NL,Bunnik,NL,77
+Hilversum,NL,Bunnik,NL,26
+Leiden Centraal,NL,Bunnik,NL,58
+Leeuwarden,NL,Bunnik,NL,190
+Maarn,NL,Bunnik,NL,12
+Nijmegen,NL,Bunnik,NL,69
+Rheden,NL,Bunnik,NL,60
+Rotterdam Centraal,NL,Bunnik,NL,64
+Tilburg,NL,Bunnik,NL,76
+Utrecht Centraal,NL,Bunnik,NL,8
+Vlissingen,NL,Bunnik,NL,194
+Zwolle,NL,Bunnik,NL,95
+Arnhem Centraal,NL,Driebergen-Zeist,NL,46
+Amersfoort Centraal,NL,Driebergen-Zeist,NL,33
+Breda,NL,Driebergen-Zeist,NL,101
+Bunnik,NL,Driebergen-Zeist,NL,4
+Diemen,NL,Driebergen-Zeist,NL,50
+Dronten,NL,Driebergen-Zeist,NL,110
+Delft,NL,Driebergen-Zeist,NL,81
+Deventer,NL,Driebergen-Zeist,NL,91
+Ede-Wageningen,NL,Driebergen-Zeist,NL,29
+Ede Centrum,NL,Driebergen-Zeist,NL,31
+Eindhoven Centraal,NL,Driebergen-Zeist,NL,90
+Enschede,NL,Driebergen-Zeist,NL,128
+Groningen,NL,Driebergen-Zeist,NL,205
+Haarlem,NL,Driebergen-Zeist,NL,70
+Heerlen,NL,Driebergen-Zeist,NL,73
+Hilversum,NL,Driebergen-Zeist,NL,30
+Leiden Centraal,NL,Driebergen-Zeist,NL,62
+Leeuwarden,NL,Driebergen-Zeist,NL,194
+Maarn,NL,Driebergen-Zeist,NL,8
+Nijmegen,NL,Driebergen-Zeist,NL,65
+Rheden,NL,Driebergen-Zeist,NL,56
+Rotterdam Centraal,NL,Driebergen-Zeist,NL,68
+Tilburg,NL,Driebergen-Zeist,NL,80
+Utrecht Centraal,NL,Driebergen-Zeist,NL,12
+Vlissingen,NL,Driebergen-Zeist,NL,198
+Zwolle,NL,Driebergen-Zeist,NL,99
+Arnhem Centraal,NL,Diemen,NL,89
+Amersfoort Centraal,NL,Diemen,NL,38
+Breda,NL,Diemen,NL,129
+Bunnik,NL,Diemen,NL,46
+Driebergen-Zeist,NL,Diemen,NL,50
+Dronten,NL,Diemen,NL,72
+Delft,NL,Diemen,NL,75
+Deventer,NL,Diemen,NL,96
+Ede-Wageningen,NL,Diemen,NL,72
+Ede Centrum,NL,Diemen,NL,70
+Eindhoven Centraal,NL,Diemen,NL,118
+Enschede,NL,Diemen,NL,152
+Groningen,NL,Diemen,NL,210
+Haarlem,NL,Diemen,NL,26
+Heerlen,NL,Diemen,NL,116
+Hilversum,NL,Diemen,NL,22
+Leiden Centraal,NL,Diemen,NL,51
+Leeuwarden,NL,Diemen,NL,199
+Maarn,NL,Diemen,NL,58
+Nijmegen,NL,Diemen,NL,108
+Rheden,NL,Diemen,NL,99
+Rotterdam Centraal,NL,Diemen,NL,85
+Tilburg,NL,Diemen,NL,108
+Utrecht Centraal,NL,Diemen,NL,38
+Vlissingen,NL,Diemen,NL,218
+Zwolle,NL,Diemen,NL,104
+Arnhem Centraal,NL,Dronten,NL,108
+Amersfoort Centraal,NL,Dronten,NL,96
+Breda,NL,Dronten,NL,189
+Bunnik,NL,Dronten,NL,106
+Driebergen-Zeist,NL,Dronten,NL,110
+Diemen,NL,Dronten,NL,72
+Delft,NL,Dronten,NL,142
+Deventer,NL,Dronten,NL,63
+Ede-Wageningen,NL,Dronten,NL,125
+Ede Centrum,NL,Dronten,NL,127
+Eindhoven Centraal,NL,Dronten,NL,178
+Enschede,NL,Dronten,NL,99
+Groningen,NL,Dronten,NL,138
+Haarlem,NL,Dronten,NL,98
+Heerlen,NL,Dronten,NL,133
+Hilversum,NL,Dronten,NL,80
+Leiden Centraal,NL,Dronten,NL,118
+Leeuwarden,NL,Dronten,NL,127
+Maarn,NL,Dronten,NL,118
+Nijmegen,NL,Dronten,NL,127
+Rheden,NL,Dronten,NL,98
+Rotterdam Centraal,NL,Dronten,NL,152
+Tilburg,NL,Dronten,NL,168
+Utrecht Centraal,NL,Dronten,NL,98
+Vlissingen,NL,Dronten,NL,285
+Zwolle,NL,Dronten,NL,32
+Arnhem Centraal,NL,Delft,NL,127
+Amersfoort Centraal,NL,Delft,NL,90
+Breda,NL,Delft,NL,64
+Bunnik,NL,Delft,NL,77
+Driebergen-Zeist,NL,Delft,NL,81
+Diemen,NL,Delft,NL,75
+Dronten,NL,Delft,NL,142
+Deventer,NL,Delft,NL,148
+Ede-Wageningen,NL,Delft,NL,110
+Ede Centrum,NL,Delft,NL,112
+Eindhoven Centraal,NL,Delft,NL,122
+Enschede,NL,Delft,NL,204
+Groningen,NL,Delft,NL,262
+Haarlem,NL,Delft,NL,53
+Heerlen,NL,Delft,NL,154
+Hilversum,NL,Delft,NL,87
+Leiden Centraal,NL,Delft,NL,24
+Leeuwarden,NL,Delft,NL,251
+Maarn,NL,Delft,NL,89
+Nijmegen,NL,Delft,NL,136
+Rheden,NL,Delft,NL,137
+Rotterdam Centraal,NL,Delft,NL,14
+Tilburg,NL,Delft,NL,85
+Utrecht Centraal,NL,Delft,NL,69
+Vlissingen,NL,Delft,NL,147
+Zwolle,NL,Delft,NL,156
+Arnhem Centraal,NL,Deventer,NL,45
+Amersfoort Centraal,NL,Deventer,NL,58
+Breda,NL,Deventer,NL,150
+Bunnik,NL,Deventer,NL,87
+Driebergen-Zeist,NL,Deventer,NL,91
+Diemen,NL,Deventer,NL,96
+Dronten,NL,Deventer,NL,63
+Delft,NL,Deventer,NL,148
+Ede-Wageningen,NL,Deventer,NL,62
+Ede Centrum,NL,Deventer,NL,64
+Eindhoven Centraal,NL,Deventer,NL,139
+Enschede,NL,Deventer,NL,61
+Groningen,NL,Deventer,NL,137
+Haarlem,NL,Deventer,NL,122
+Heerlen,NL,Deventer,NL,70
+Hilversum,NL,Deventer,NL,74
+Leiden Centraal,NL,Deventer,NL,129
+Leeuwarden,NL,Deventer,NL,126
+Maarn,NL,Deventer,NL,83
+Nijmegen,NL,Deventer,NL,64
+Rheden,NL,Deventer,NL,35
+Rotterdam Centraal,NL,Deventer,NL,135
+Tilburg,NL,Deventer,NL,129
+Utrecht Centraal,NL,Deventer,NL,79
+Vlissingen,NL,Deventer,NL,249
+Zwolle,NL,Deventer,NL,31
+Arnhem Centraal,NL,Ede-Wageningen,NL,17
+Amersfoort Centraal,NL,Ede-Wageningen,NL,34
+Breda,NL,Ede-Wageningen,NL,122
+Bunnik,NL,Ede-Wageningen,NL,33
+Driebergen-Zeist,NL,Ede-Wageningen,NL,29
+Diemen,NL,Ede-Wageningen,NL,72
+Dronten,NL,Ede-Wageningen,NL,125
+Delft,NL,Ede-Wageningen,NL,110
+Deventer,NL,Ede-Wageningen,NL,62
+Ede Centrum,NL,Ede-Wageningen,NL,2
+Eindhoven Centraal,NL,Ede-Wageningen,NL,111
+Enschede,NL,Ede-Wageningen,NL,99
+Groningen,NL,Ede-Wageningen,NL,199
+Haarlem,NL,Ede-Wageningen,NL,98
+Heerlen,NL,Ede-Wageningen,NL,44
+Hilversum,NL,Ede-Wageningen,NL,50
+Leiden Centraal,NL,Ede-Wageningen,NL,91
+Leeuwarden,NL,Ede-Wageningen,NL,188
+Maarn,NL,Ede-Wageningen,NL,21
+Nijmegen,NL,Ede-Wageningen,NL,36
+Rheden,NL,Ede-Wageningen,NL,27
+Rotterdam Centraal,NL,Ede-Wageningen,NL,97
+Tilburg,NL,Ede-Wageningen,NL,101
+Utrecht Centraal,NL,Ede-Wageningen,NL,41
+Vlissingen,NL,Ede-Wageningen,NL,221
+Zwolle,NL,Ede-Wageningen,NL,93
+Arnhem Centraal,NL,Ede Centrum,NL,19
+Amersfoort Centraal,NL,Ede Centrum,NL,32
+Breda,NL,Ede Centrum,NL,124
+Bunnik,NL,Ede Centrum,NL,35
+Driebergen-Zeist,NL,Ede Centrum,NL,31
+Diemen,NL,Ede Centrum,NL,70
+Dronten,NL,Ede Centrum,NL,127
+Delft,NL,Ede Centrum,NL,112
+Deventer,NL,Ede Centrum,NL,64
+Ede-Wageningen,NL,Ede Centrum,NL,2
+Eindhoven Centraal,NL,Ede Centrum,NL,113
+Enschede,NL,Ede Centrum,NL,101
+Groningen,NL,Ede Centrum,NL,201
+Haarlem,NL,Ede Centrum,NL,96
+Heerlen,NL,Ede Centrum,NL,46
+Hilversum,NL,Ede Centrum,NL,48
+Leiden Centraal,NL,Ede Centrum,NL,93
+Leeuwarden,NL,Ede Centrum,NL,190
+Maarn,NL,Ede Centrum,NL,23
+Nijmegen,NL,Ede Centrum,NL,38
+Rheden,NL,Ede Centrum,NL,29
+Rotterdam Centraal,NL,Ede Centrum,NL,99
+Tilburg,NL,Ede Centrum,NL,103
+Utrecht Centraal,NL,Ede Centrum,NL,43
+Vlissingen,NL,Ede Centrum,NL,223
+Zwolle,NL,Ede Centrum,NL,95
+Arnhem Centraal,NL,Eindhoven Centraal,NL,94
+Amersfoort Centraal,NL,Eindhoven Centraal,NL,101
+Breda,NL,Eindhoven Centraal,NL,58
+Bunnik,NL,Eindhoven Centraal,NL,86
+Driebergen-Zeist,NL,Eindhoven Centraal,NL,90
+Diemen,NL,Eindhoven Centraal,NL,118
+Dronten,NL,Eindhoven Centraal,NL,178
+Delft,NL,Eindhoven Centraal,NL,122
+Deventer,NL,Eindhoven Centraal,NL,139
+Ede-Wageningen,NL,Eindhoven Centraal,NL,111
+Ede Centrum,NL,Eindhoven Centraal,NL,113
+Enschede,NL,Eindhoven Centraal,NL,176
+Groningen,NL,Eindhoven Centraal,NL,273
+Haarlem,NL,Eindhoven Centraal,NL,138
+Heerlen,NL,Eindhoven Centraal,NL,96
+Hilversum,NL,Eindhoven Centraal,NL,98
+Leiden Centraal,NL,Eindhoven Centraal,NL,130
+Leeuwarden,NL,Eindhoven Centraal,NL,262
+Maarn,NL,Eindhoven Centraal,NL,98
+Nijmegen,NL,Eindhoven Centraal,NL,75
+Rheden,NL,Eindhoven Centraal,NL,104
+Rotterdam Centraal,NL,Eindhoven Centraal,NL,108
+Tilburg,NL,Eindhoven Centraal,NL,37
+Utrecht Centraal,NL,Eindhoven Centraal,NL,80
+Vlissingen,NL,Eindhoven Centraal,NL,157
+Zwolle,NL,Eindhoven Centraal,NL,167
+Arnhem Centraal,NL,Enschede,NL,82
+Amersfoort Centraal,NL,Enschede,NL,114
+Breda,NL,Enschede,NL,187
+Bunnik,NL,Enschede,NL,132
+Driebergen-Zeist,NL,Enschede,NL,128
+Diemen,NL,Enschede,NL,152
+Dronten,NL,Enschede,NL,99
+Delft,NL,Enschede,NL,204
+Deventer,NL,Enschede,NL,61
+Ede-Wageningen,NL,Enschede,NL,99
+Ede Centrum,NL,Enschede,NL,101
+Eindhoven Centraal,NL,Enschede,NL,176
+Groningen,NL,Enschede,NL,173
+Haarlem,NL,Enschede,NL,178
+Heerlen,NL,Enschede,NL,107
+Hilversum,NL,Enschede,NL,130
+Leiden Centraal,NL,Enschede,NL,185
+Leeuwarden,NL,Enschede,NL,162
+Maarn,NL,Enschede,NL,120
+Nijmegen,NL,Enschede,NL,101
+Rheden,NL,Enschede,NL,72
+Rotterdam Centraal,NL,Enschede,NL,191
+Tilburg,NL,Enschede,NL,166
+Utrecht Centraal,NL,Enschede,NL,135
+Vlissingen,NL,Enschede,NL,286
+Zwolle,NL,Enschede,NL,67
+Arnhem Centraal,NL,Groningen,NL,182
+Amersfoort Centraal,NL,Groningen,NL,172
+Breda,NL,Groningen,NL,284
+Bunnik,NL,Groningen,NL,201
+Driebergen-Zeist,NL,Groningen,NL,205
+Diemen,NL,Groningen,NL,210
+Dronten,NL,Groningen,NL,138
+Delft,NL,Groningen,NL,262
+Deventer,NL,Groningen,NL,137
+Ede-Wageningen,NL,Groningen,NL,199
+Ede Centrum,NL,Groningen,NL,201
+Eindhoven Centraal,NL,Groningen,NL,273
+Enschede,NL,Groningen,NL,173
+Haarlem,NL,Groningen,NL,236
+Heerlen,NL,Groningen,NL,207
+Hilversum,NL,Groningen,NL,188
+Leiden Centraal,NL,Groningen,NL,243
+Leeuwarden,NL,Groningen,NL,54
+Maarn,NL,Groningen,NL,213
+Nijmegen,NL,Groningen,NL,201
+Rheden,NL,Groningen,NL,172
+Rotterdam Centraal,NL,Groningen,NL,249
+Tilburg,NL,Groningen,NL,263
+Utrecht Centraal,NL,Groningen,NL,193
+Vlissingen,NL,Groningen,NL,381
+Zwolle,NL,Groningen,NL,106
+Arnhem Centraal,NL,Harlingen,NL,197
+Amersfoort Centraal,NL,Harlingen,NL,187
+Breda,NL,Harlingen,NL,299
+Bunnik,NL,Harlingen,NL,216
+Driebergen-Zeist,NL,Harlingen,NL,220
+Diemen,NL,Harlingen,NL,225
+Dronten,NL,Harlingen,NL,153
+Delft,NL,Harlingen,NL,277
+Deventer,NL,Harlingen,NL,152
+Ede-Wageningen,NL,Harlingen,NL,214
+Ede Centrum,NL,Harlingen,NL,216
+Eindhoven Centraal,NL,Harlingen,NL,288
+Enschede,NL,Harlingen,NL,188
+Groningen,NL,Harlingen,NL,80
+Haarlem,NL,Harlingen,NL,251
+Heerlen,NL,Harlingen,NL,222
+Hilversum,NL,Harlingen,NL,203
+Leiden Centraal,NL,Harlingen,NL,258
+Leeuwarden,NL,Harlingen,NL,26
+Maarn,NL,Harlingen,NL,228
+Nijmegen,NL,Harlingen,NL,216
+Rheden,NL,Harlingen,NL,187
+Rotterdam Centraal,NL,Harlingen,NL,264
+Tilburg,NL,Harlingen,NL,278
+Utrecht Centraal,NL,Harlingen,NL,208
+Vlissingen,NL,Harlingen,NL,396
+Zwolle,NL,Harlingen,NL,121
+Arnhem Centraal,NL,Haarlem,NL,115
+Amersfoort Centraal,NL,Haarlem,NL,64
+Breda,NL,Haarlem,NL,117
+Bunnik,NL,Haarlem,NL,66
+Driebergen-Zeist,NL,Haarlem,NL,70
+Diemen,NL,Haarlem,NL,26
+Dronten,NL,Haarlem,NL,98
+Delft,NL,Haarlem,NL,53
+Deventer,NL,Haarlem,NL,122
+Ede-Wageningen,NL,Haarlem,NL,98
+Ede Centrum,NL,Haarlem,NL,96
+Eindhoven Centraal,NL,Haarlem,NL,138
+Enschede,NL,Haarlem,NL,178
+Groningen,NL,Haarlem,NL,236
+Heerlen,NL,Haarlem,NL,142
+Hilversum,NL,Haarlem,NL,48
+Leiden Centraal,NL,Haarlem,NL,29
+Leeuwarden,NL,Haarlem,NL,225
+Maarn,NL,Haarlem,NL,78
+Nijmegen,NL,Haarlem,NL,134
+Rheden,NL,Haarlem,NL,125
+Rotterdam Centraal,NL,Haarlem,NL,67
+Tilburg,NL,Haarlem,NL,128
+Utrecht Centraal,NL,Haarlem,NL,58
+Vlissingen,NL,Haarlem,NL,200
+Zwolle,NL,Haarlem,NL,130
+Arnhem Centraal,NL,Heerlen,NL,27
+Amersfoort Centraal,NL,Heerlen,NL,78
+Breda,NL,Heerlen,NL,132
+Bunnik,NL,Heerlen,NL,77
+Driebergen-Zeist,NL,Heerlen,NL,73
+Diemen,NL,Heerlen,NL,116
+Dronten,NL,Heerlen,NL,133
+Delft,NL,Heerlen,NL,154
+Deventer,NL,Heerlen,NL,70
+Ede-Wageningen,NL,Heerlen,NL,44
+Ede Centrum,NL,Heerlen,NL,46
+Eindhoven Centraal,NL,Heerlen,NL,96
+Enschede,NL,Heerlen,NL,107
+Groningen,NL,Heerlen,NL,207
+Haarlem,NL,Heerlen,NL,142
+Hilversum,NL,Heerlen,NL,94
+Leiden Centraal,NL,Heerlen,NL,135
+Leeuwarden,NL,Heerlen,NL,196
+Maarn,NL,Heerlen,NL,65
+Nijmegen,NL,Heerlen,NL,46
+Rheden,NL,Heerlen,NL,35
+Rotterdam Centraal,NL,Heerlen,NL,141
+Tilburg,NL,Heerlen,NL,111
+Utrecht Centraal,NL,Heerlen,NL,85
+Vlissingen,NL,Heerlen,NL,231
+Zwolle,NL,Heerlen,NL,101
+Arnhem Centraal,NL,Hilversum,NL,67
+Amersfoort Centraal,NL,Hilversum,NL,16
+Breda,NL,Hilversum,NL,109
+Bunnik,NL,Hilversum,NL,26
+Driebergen-Zeist,NL,Hilversum,NL,30
+Diemen,NL,Hilversum,NL,22
+Dronten,NL,Hilversum,NL,80
+Delft,NL,Hilversum,NL,87
+Deventer,NL,Hilversum,NL,74
+Ede-Wageningen,NL,Hilversum,NL,50
+Ede Centrum,NL,Hilversum,NL,48
+Eindhoven Centraal,NL,Hilversum,NL,98
+Enschede,NL,Hilversum,NL,130
+Groningen,NL,Hilversum,NL,188
+Haarlem,NL,Hilversum,NL,48
+Heerlen,NL,Hilversum,NL,94
+Leiden Centraal,NL,Hilversum,NL,68
+Leeuwarden,NL,Hilversum,NL,177
+Maarn,NL,Hilversum,NL,38
+Nijmegen,NL,Hilversum,NL,86
+Rheden,NL,Hilversum,NL,77
+Rotterdam Centraal,NL,Hilversum,NL,74
+Tilburg,NL,Hilversum,NL,88
+Utrecht Centraal,NL,Hilversum,NL,18
+Vlissingen,NL,Hilversum,NL,206
+Zwolle,NL,Hilversum,NL,82
+Arnhem Centraal,NL,Leiden Centraal,NL,108
+Amersfoort Centraal,NL,Leiden Centraal,NL,71
+Breda,NL,Leiden Centraal,NL,88
+Bunnik,NL,Leiden Centraal,NL,58
+Driebergen-Zeist,NL,Leiden Centraal,NL,62
+Diemen,NL,Leiden Centraal,NL,51
+Dronten,NL,Leiden Centraal,NL,118
+Delft,NL,Leiden Centraal,NL,24
+Deventer,NL,Leiden Centraal,NL,129
+Ede-Wageningen,NL,Leiden Centraal,NL,91
+Ede Centrum,NL,Leiden Centraal,NL,93
+Eindhoven Centraal,NL,Leiden Centraal,NL,130
+Enschede,NL,Leiden Centraal,NL,185
+Groningen,NL,Leiden Centraal,NL,243
+Haarlem,NL,Leiden Centraal,NL,29
+Heerlen,NL,Leiden Centraal,NL,135
+Hilversum,NL,Leiden Centraal,NL,68
+Leeuwarden,NL,Leiden Centraal,NL,232
+Maarn,NL,Leiden Centraal,NL,70
+Nijmegen,NL,Leiden Centraal,NL,127
+Rheden,NL,Leiden Centraal,NL,118
+Rotterdam Centraal,NL,Leiden Centraal,NL,38
+Tilburg,NL,Leiden Centraal,NL,109
+Utrecht Centraal,NL,Leiden Centraal,NL,50
+Vlissingen,NL,Leiden Centraal,NL,171
+Zwolle,NL,Leiden Centraal,NL,137
+Arnhem Centraal,NL,Leeuwarden,NL,171
+Amersfoort Centraal,NL,Leeuwarden,NL,161
+Breda,NL,Leeuwarden,NL,273
+Bunnik,NL,Leeuwarden,NL,190
+Driebergen-Zeist,NL,Leeuwarden,NL,194
+Diemen,NL,Leeuwarden,NL,199
+Dronten,NL,Leeuwarden,NL,127
+Delft,NL,Leeuwarden,NL,251
+Deventer,NL,Leeuwarden,NL,126
+Ede-Wageningen,NL,Leeuwarden,NL,188
+Ede Centrum,NL,Leeuwarden,NL,190
+Eindhoven Centraal,NL,Leeuwarden,NL,262
+Enschede,NL,Leeuwarden,NL,162
+Groningen,NL,Leeuwarden,NL,54
+Haarlem,NL,Leeuwarden,NL,225
+Heerlen,NL,Leeuwarden,NL,196
+Hilversum,NL,Leeuwarden,NL,177
+Leiden Centraal,NL,Leeuwarden,NL,232
+Maarn,NL,Leeuwarden,NL,202
+Nijmegen,NL,Leeuwarden,NL,190
+Rheden,NL,Leeuwarden,NL,161
+Rotterdam Centraal,NL,Leeuwarden,NL,238
+Tilburg,NL,Leeuwarden,NL,252
+Utrecht Centraal,NL,Leeuwarden,NL,182
+Vlissingen,NL,Leeuwarden,NL,370
+Zwolle,NL,Leeuwarden,NL,95
+Arnhem Centraal,NL,Maarn,NL,38
+Amersfoort Centraal,NL,Maarn,NL,41
+Breda,NL,Maarn,NL,109
+Bunnik,NL,Maarn,NL,12
+Driebergen-Zeist,NL,Maarn,NL,8
+Diemen,NL,Maarn,NL,58
+Dronten,NL,Maarn,NL,118
+Delft,NL,Maarn,NL,89
+Deventer,NL,Maarn,NL,83
+Ede-Wageningen,NL,Maarn,NL,21
+Ede Centrum,NL,Maarn,NL,23
+Eindhoven Centraal,NL,Maarn,NL,98
+Enschede,NL,Maarn,NL,120
+Groningen,NL,Maarn,NL,213
+Haarlem,NL,Maarn,NL,78
+Heerlen,NL,Maarn,NL,65
+Hilversum,NL,Maarn,NL,38
+Leiden Centraal,NL,Maarn,NL,70
+Leeuwarden,NL,Maarn,NL,202
+Nijmegen,NL,Maarn,NL,57
+Rheden,NL,Maarn,NL,48
+Rotterdam Centraal,NL,Maarn,NL,76
+Tilburg,NL,Maarn,NL,88
+Utrecht Centraal,NL,Maarn,NL,20
+Vlissingen,NL,Maarn,NL,206
+Zwolle,NL,Maarn,NL,107
+Arnhem Centraal,NL,Maastricht,NL,53
+Amersfoort Centraal,NL,Maastricht,NL,104
+Breda,NL,Maastricht,NL,156
+Bunnik,NL,Maastricht,NL,103
+Driebergen-Zeist,NL,Maastricht,NL,99
+Diemen,NL,Maastricht,NL,142
+Dronten,NL,Maastricht,NL,159
+Delft,NL,Maastricht,NL,180
+Deventer,NL,Maastricht,NL,96
+Ede-Wageningen,NL,Maastricht,NL,70
+Ede Centrum,NL,Maastricht,NL,72
+Eindhoven Centraal,NL,Maastricht,NL,98
+Enschede,NL,Maastricht,NL,133
+Groningen,NL,Maastricht,NL,233
+Haarlem,NL,Maastricht,NL,168
+Heerlen,NL,Maastricht,NL,26
+Hilversum,NL,Maastricht,NL,120
+Leiden Centraal,NL,Maastricht,NL,161
+Leeuwarden,NL,Maastricht,NL,222
+Maarn,NL,Maastricht,NL,91
+Nijmegen,NL,Maastricht,NL,72
+Rheden,NL,Maastricht,NL,61
+Rotterdam Centraal,NL,Maastricht,NL,167
+Tilburg,NL,Maastricht,NL,135
+Utrecht Centraal,NL,Maastricht,NL,111
+Vlissingen,NL,Maastricht,NL,255
+Zwolle,NL,Maastricht,NL,127
+Arnhem Centraal,NL,Nijmegen,NL,19
+Amersfoort Centraal,NL,Nijmegen,NL,70
+Breda,NL,Nijmegen,NL,86
+Bunnik,NL,Nijmegen,NL,69
+Driebergen-Zeist,NL,Nijmegen,NL,65
+Diemen,NL,Nijmegen,NL,108
+Dronten,NL,Nijmegen,NL,127
+Delft,NL,Nijmegen,NL,136
+Deventer,NL,Nijmegen,NL,64
+Ede-Wageningen,NL,Nijmegen,NL,36
+Ede Centrum,NL,Nijmegen,NL,38
+Eindhoven Centraal,NL,Nijmegen,NL,75
+Enschede,NL,Nijmegen,NL,101
+Groningen,NL,Nijmegen,NL,201
+Haarlem,NL,Nijmegen,NL,134
+Heerlen,NL,Nijmegen,NL,46
+Hilversum,NL,Nijmegen,NL,86
+Leiden Centraal,NL,Nijmegen,NL,127
+Leeuwarden,NL,Nijmegen,NL,190
+Maarn,NL,Nijmegen,NL,57
+Rheden,NL,Nijmegen,NL,29
+Rotterdam Centraal,NL,Nijmegen,NL,122
+Tilburg,NL,Nijmegen,NL,65
+Utrecht Centraal,NL,Nijmegen,NL,77
+Vlissingen,NL,Nijmegen,NL,185
+Zwolle,NL,Nijmegen,NL,95
+Arnhem Centraal,NL,Rheden,NL,10
+Amersfoort Centraal,NL,Rheden,NL,61
+Breda,NL,Rheden,NL,115
+Bunnik,NL,Rheden,NL,60
+Driebergen-Zeist,NL,Rheden,NL,56
+Diemen,NL,Rheden,NL,99
+Dronten,NL,Rheden,NL,98
+Delft,NL,Rheden,NL,137
+Deventer,NL,Rheden,NL,35
+Ede-Wageningen,NL,Rheden,NL,27
+Ede Centrum,NL,Rheden,NL,29
+Eindhoven Centraal,NL,Rheden,NL,104
+Enschede,NL,Rheden,NL,72
+Groningen,NL,Rheden,NL,172
+Haarlem,NL,Rheden,NL,125
+Heerlen,NL,Rheden,NL,35
+Hilversum,NL,Rheden,NL,77
+Leiden Centraal,NL,Rheden,NL,118
+Leeuwarden,NL,Rheden,NL,161
+Maarn,NL,Rheden,NL,48
+Nijmegen,NL,Rheden,NL,29
+Rotterdam Centraal,NL,Rheden,NL,124
+Tilburg,NL,Rheden,NL,94
+Utrecht Centraal,NL,Rheden,NL,68
+Vlissingen,NL,Rheden,NL,214
+Zwolle,NL,Rheden,NL,66
+Arnhem Centraal,NL,Rotterdam Centraal,NL,114
+Amersfoort Centraal,NL,Rotterdam Centraal,NL,77
+Breda,NL,Rotterdam Centraal,NL,50
+Bunnik,NL,Rotterdam Centraal,NL,64
+Driebergen-Zeist,NL,Rotterdam Centraal,NL,68
+Diemen,NL,Rotterdam Centraal,NL,85
+Dronten,NL,Rotterdam Centraal,NL,152
+Delft,NL,Rotterdam Centraal,NL,14
+Deventer,NL,Rotterdam Centraal,NL,135
+Ede-Wageningen,NL,Rotterdam Centraal,NL,97
+Ede Centrum,NL,Rotterdam Centraal,NL,99
+Eindhoven Centraal,NL,Rotterdam Centraal,NL,108
+Enschede,NL,Rotterdam Centraal,NL,191
+Groningen,NL,Rotterdam Centraal,NL,249
+Haarlem,NL,Rotterdam Centraal,NL,67
+Heerlen,NL,Rotterdam Centraal,NL,141
+Hilversum,NL,Rotterdam Centraal,NL,74
+Leiden Centraal,NL,Rotterdam Centraal,NL,38
+Leeuwarden,NL,Rotterdam Centraal,NL,238
+Maarn,NL,Rotterdam Centraal,NL,76
+Nijmegen,NL,Rotterdam Centraal,NL,122
+Rheden,NL,Rotterdam Centraal,NL,124
+Tilburg,NL,Rotterdam Centraal,NL,71
+Utrecht Centraal,NL,Rotterdam Centraal,NL,56
+Vlissingen,NL,Rotterdam Centraal,NL,133
+Zwolle,NL,Rotterdam Centraal,NL,143
+Arnhem Centraal,NL,Tilburg,NL,84
+Amersfoort Centraal,NL,Tilburg,NL,91
+Breda,NL,Tilburg,NL,21
+Bunnik,NL,Tilburg,NL,76
+Driebergen-Zeist,NL,Tilburg,NL,80
+Diemen,NL,Tilburg,NL,108
+Dronten,NL,Tilburg,NL,168
+Delft,NL,Tilburg,NL,85
+Deventer,NL,Tilburg,NL,129
+Ede-Wageningen,NL,Tilburg,NL,101
+Ede Centrum,NL,Tilburg,NL,103
+Eindhoven Centraal,NL,Tilburg,NL,37
+Enschede,NL,Tilburg,NL,166
+Groningen,NL,Tilburg,NL,263
+Haarlem,NL,Tilburg,NL,128
+Heerlen,NL,Tilburg,NL,111
+Hilversum,NL,Tilburg,NL,88
+Leiden Centraal,NL,Tilburg,NL,109
+Leeuwarden,NL,Tilburg,NL,252
+Maarn,NL,Tilburg,NL,88
+Nijmegen,NL,Tilburg,NL,65
+Rheden,NL,Tilburg,NL,94
+Rotterdam Centraal,NL,Tilburg,NL,71
+Utrecht Centraal,NL,Tilburg,NL,70
+Vlissingen,NL,Tilburg,NL,120
+Zwolle,NL,Tilburg,NL,157
+Arnhem Centraal,NL,Utrecht Centraal,NL,58
+Amersfoort Centraal,NL,Utrecht Centraal,NL,21
+Breda,NL,Utrecht Centraal,NL,91
+Bunnik,NL,Utrecht Centraal,NL,8
+Driebergen-Zeist,NL,Utrecht Centraal,NL,12
+Diemen,NL,Utrecht Centraal,NL,38
+Dronten,NL,Utrecht Centraal,NL,98
+Delft,NL,Utrecht Centraal,NL,69
+Deventer,NL,Utrecht Centraal,NL,79
+Ede-Wageningen,NL,Utrecht Centraal,NL,41
+Ede Centrum,NL,Utrecht Centraal,NL,43
+Eindhoven Centraal,NL,Utrecht Centraal,NL,80
+Enschede,NL,Utrecht Centraal,NL,135
+Groningen,NL,Utrecht Centraal,NL,193
+Haarlem,NL,Utrecht Centraal,NL,58
+Heerlen,NL,Utrecht Centraal,NL,85
+Hilversum,NL,Utrecht Centraal,NL,18
+Leiden Centraal,NL,Utrecht Centraal,NL,50
+Leeuwarden,NL,Utrecht Centraal,NL,182
+Maarn,NL,Utrecht Centraal,NL,20
+Nijmegen,NL,Utrecht Centraal,NL,77
+Rheden,NL,Utrecht Centraal,NL,68
+Rotterdam Centraal,NL,Utrecht Centraal,NL,56
+Tilburg,NL,Utrecht Centraal,NL,70
+Vlissingen,NL,Utrecht Centraal,NL,188
+Zwolle,NL,Utrecht Centraal,NL,87
+Arnhem Centraal,NL,Vlissingen,NL,204
+Amersfoort Centraal,NL,Vlissingen,NL,209
+Breda,NL,Vlissingen,NL,99
+Bunnik,NL,Vlissingen,NL,194
+Driebergen-Zeist,NL,Vlissingen,NL,198
+Diemen,NL,Vlissingen,NL,218
+Dronten,NL,Vlissingen,NL,285
+Delft,NL,Vlissingen,NL,147
+Deventer,NL,Vlissingen,NL,249
+Ede-Wageningen,NL,Vlissingen,NL,221
+Ede Centrum,NL,Vlissingen,NL,223
+Eindhoven Centraal,NL,Vlissingen,NL,157
+Enschede,NL,Vlissingen,NL,286
+Groningen,NL,Vlissingen,NL,381
+Haarlem,NL,Vlissingen,NL,200
+Heerlen,NL,Vlissingen,NL,231
+Hilversum,NL,Vlissingen,NL,206
+Leiden Centraal,NL,Vlissingen,NL,171
+Leeuwarden,NL,Vlissingen,NL,370
+Maarn,NL,Vlissingen,NL,206
+Nijmegen,NL,Vlissingen,NL,185
+Rheden,NL,Vlissingen,NL,214
+Rotterdam Centraal,NL,Vlissingen,NL,133
+Tilburg,NL,Vlissingen,NL,120
+Utrecht Centraal,NL,Vlissingen,NL,188
+Zwolle,NL,Vlissingen,NL,275
+Arnhem Centraal,NL,Zwolle,NL,76
+Amersfoort Centraal,NL,Zwolle,NL,66
+Breda,NL,Zwolle,NL,178
+Bunnik,NL,Zwolle,NL,95
+Driebergen-Zeist,NL,Zwolle,NL,99
+Diemen,NL,Zwolle,NL,104
+Dronten,NL,Zwolle,NL,32
+Delft,NL,Zwolle,NL,156
+Deventer,NL,Zwolle,NL,31
+Ede-Wageningen,NL,Zwolle,NL,93
+Ede Centrum,NL,Zwolle,NL,95
+Eindhoven Centraal,NL,Zwolle,NL,167
+Enschede,NL,Zwolle,NL,67
+Groningen,NL,Zwolle,NL,106
+Haarlem,NL,Zwolle,NL,130
+Heerlen,NL,Zwolle,NL,101
+Hilversum,NL,Zwolle,NL,82
+Leiden Centraal,NL,Zwolle,NL,137
+Leeuwarden,NL,Zwolle,NL,95
+Maarn,NL,Zwolle,NL,107
+Nijmegen,NL,Zwolle,NL,95
+Rheden,NL,Zwolle,NL,66
+Rotterdam Centraal,NL,Zwolle,NL,143
+Tilburg,NL,Zwolle,NL,157
+Utrecht Centraal,NL,Zwolle,NL,87
+Vlissingen,NL,Zwolle,NL,275
