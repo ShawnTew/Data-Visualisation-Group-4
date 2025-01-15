@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdownContainer.append("button")
         .attr("id", "dropdown-button")
         .text("Select Cities")
+        .style("display", "none")
         .style("margin-right", "10px")
         .style("padding", "5px 10px");
 
