@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .style("z-index", "1000");
 
     // Load CSV data for the parallel plot
-    d3.csv("../data/Combination - amenities.csv").then(function (data) {
+    d3.csv("../data/combine new cities  - Output.csv").then(function (data) {
         const zScoreCols = Object.keys(data[0]).filter((col) => col.includes("z-score"));
         const cityNames = [...new Set(data.map((d) => d["NAME"]))]; // Unique city names
 
@@ -140,16 +140,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Function to update the chart based on selected filters
+        // Updated updateChart function
         function updateChart() {
-            // Get selected names
-            const selectedNames = Array.from(
-                dropdownMenu.selectAll("input:checked").nodes(),
-                (d) => d.value
-            );
+            // Ensure global rankings are available
+            if (typeof globalRankings === "undefined" || globalRankings.length === 0) {
+                console.error("Global rankings are not calculated yet.");
+                return;
+            }
 
-            // Filter data based on selected names
-            const filteredData = data.filter((d) => selectedNames.includes(d["NAME"]));
+            // Get the top 5 cities from globalRankings
+            const topCities = globalRankings.slice(0, 5).map(d => d.city);
+
+            // Filter data based on top 5 cities
+            const filteredData = data.filter(d => topCities.includes(d["NAME"]));
 
             // Clear existing paths and legend
             parallelSvg.selectAll(".line").remove();
@@ -221,10 +224,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 .style("font-size", "12px");
         }
 
-        // Attach updateChart function to checkbox change event
-        dropdownMenu.selectAll("input").on("change", updateChart);
+        // Attach updateChart function to the "Update Global Rankings" button
+        d3.select("body")
+            .append("button")
+            .text("Update Parallel Coordinates Plot")
+            .style("margin", "20px")
+            .style("padding", "10px")
+            .style("background", "#007BFF")
+            .style("color", "white")
+            .style("border", "none")
+            .style("border-radius", "5px")
+            .style("cursor", "pointer")
+            .on("click", () => {
+                updateChart();
+            });
 
-        // Draw the initial chart
-        updateChart();
     });
 });
