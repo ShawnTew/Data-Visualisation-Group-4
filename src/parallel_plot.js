@@ -205,13 +205,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Update legend with filtered city names
             const legend = parallelSvg.append("g")
-                .attr("transform", `translate(${width + 30}, 10)`) // Position on the right
+                .attr("transform", `translate(0, ${height + 50})`) // Position below the graph
                 .selectAll(".legend-item")
                 .data(filteredData)
                 .enter()
                 .append("g")
                 .attr("class", "legend-item")
-                .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+                .attr("transform", (d, i) => `translate(${i * 150}, 0)`); // Position items horizontally
 
             legend.append("rect")
                 .attr("width", 15)

@@ -156,29 +156,29 @@ h1 {
 #main-container {
     display: flex;
     flex-direction: row; /* Align children horizontally */
-    gap: 20px; /* Add spacing between the sections */
-    margin: 20px auto;
-    max-width: 1800px;
+    gap: 2%; /* Add spacing between the sections */
+    margin: 2% auto;
+    max-width: 95%;
     justify-content: space-between;
-    padding: 20px; /* Add padding to the container for less empty space around */
+    padding: 1%; /* Add padding to the container for less empty space around */
 }
 
 #parallel-plot-container {
-    flex: 2; /* Make parallel plot wider */
-    padding: 20px;
+    flex: 70%; /* Increase width of parallel plot section */
+    padding: 2%;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 1%;
     background: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #widgets-container {
-    flex: 1; /* Make the filter section more narrow */
-    padding: 20px;
+    flex: 25%; /* Reduce width of the scented widgets section */
+    padding: 2%;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 1%;
     background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5% 1% rgba(0, 0, 0, 0.1);
 }
 
 #parallel-plot-container {
@@ -190,32 +190,34 @@ h1 {
 #widgets-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2%;
 }
 
 #widgets {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2%;
 }
 
 #buttons-container {
-    margin-top: 20px;
+    margin-top: 2%;
     display: flex;
-    gap: 10px; /* Add space between buttons */
+    gap: 2%; /* Add space between buttons */
     justify-content: center; /* Center align buttons inside the container */
 }
 
 button {
-    padding: 10px;
+    padding: 2%;
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 1%;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #0056b3;
 }
+
+
 
