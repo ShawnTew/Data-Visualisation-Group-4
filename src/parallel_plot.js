@@ -17,10 +17,49 @@ document.addEventListener("DOMContentLoaded", () => {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
+    // Add a dropdown container for "NAME" filter
+    const dropdownContainer = d3.select("#parallel-plot-container")
+        .append("div")
+        .attr("id", "dropdown-container")
+        .style("margin-bottom", "20px");
+
+    // Create dropdown button
+    dropdownContainer.append("button")
+        .attr("id", "dropdown-button")
+        .text("Select Cities")
+        .style("margin-right", "10px")
+        .style("padding", "5px 10px");
+
+    // Create the dropdown menu
+    const dropdownMenu = dropdownContainer.append("div")
+        .attr("id", "dropdown-menu")
+        .style("display", "none") // Initially hidden
+        .style("position", "absolute")
+        .style("background-color", "#fff")
+        .style("border", "1px solid #ccc")
+        .style("padding", "10px")
+        .style("z-index", "1000");
+
     // Load CSV data for the parallel plot
     d3.csv("../data/Combination - amenities.csv").then(function (data) {
         const zScoreCols = Object.keys(data[0]).filter((col) => col.includes("z-score"));
-        const cityNames = data.map((d) => d["NAME"]);
+        const cityNames = [...new Set(data.map((d) => d["NAME"]))]; // Unique city names
+
+        // Add checkboxes to dropdown menu
+        dropdownMenu.selectAll("label")
+            .data(cityNames)
+            .enter()
+            .append("label")
+            .style("display", "block")
+            .html((d) => `
+                <input type="checkbox" value="${d}" checked> ${d}
+            `);
+
+        // Toggle dropdown menu visibility
+        d3.select("#dropdown-button").on("click", () => {
+            const isVisible = dropdownMenu.style("display") === "block";
+            dropdownMenu.style("display", isVisible ? "none" : "block");
+        });
 
         // Set scales for each axis
         const yScales = {};
@@ -101,68 +140,91 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Add legend for city names
-        const legend = parallelSvg.append("g")
-            .attr("transform", `translate(${width + 30}, 10)`) // Position on the right
-            .selectAll("g")
-            .data(cityNames) // Use city names for the legend
-            .enter()
-            .append("g")
-            .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+        // Function to update the chart based on selected filters
+        function updateChart() {
+            // Get selected names
+            const selectedNames = Array.from(
+                dropdownMenu.selectAll("input:checked").nodes(),
+                (d) => d.value
+            );
 
-        legend.append("rect")
-            .attr("width", 15)
-            .attr("height", 15)
-            .attr("fill", (d, i) => colors[i % colors.length]);
+            // Filter data based on selected names
+            const filteredData = data.filter((d) => selectedNames.includes(d["NAME"]));
 
-        legend.append("text")
-            .attr("x", 20)
-            .attr("y", 12)
-            .text((d) => d) // Display city names
-            .style("font-size", "12px");
+            // Clear existing paths and legend
+            parallelSvg.selectAll(".line").remove();
+            parallelSvg.selectAll(".legend-item").remove();
 
-        // Draw lines (paths) for each row
-        const line = d3.line()
-            .x((d) => xScale(d.axis)) // Map axis position
-            .y((d) => yScales[d.axis](+d.value)); // Map value to axis scale
+            // Draw filtered paths
+            const line = d3.line()
+                .x((d) => xScale(d.axis)) // Map axis position
+                .y((d) => yScales[d.axis](+d.value)); // Map value to axis scale
 
-        data.forEach((row, i) => {
-            const pathData = zScoreCols.map((col) => ({ axis: col, value: row[col] }));
+            filteredData.forEach((row, i) => {
+                const pathData = zScoreCols.map((col) => ({ axis: col, value: row[col] }));
 
-            parallelSvg.append("path")
-                .datum(pathData)
-                .attr("class", "line")
-                .attr("d", line)
-                .attr("stroke", colors[i % colors.length]) // Assign color for each city
-                .attr("fill", "none")
-                .attr("stroke-width", 1.5)
-                .attr("stroke-opacity", 0.7)
-                .on("mouseover", function (event, d) {
-                    // Highlight the line
-                    d3.select(this)
-                        .attr("stroke-width", 3)
-                        .attr("stroke-opacity", 1);
+                parallelSvg.append("path")
+                    .datum(pathData)
+                    .attr("class", "line")
+                    .attr("d", line)
+                    .attr("stroke", colors[i % colors.length]) // Assign color for each city
+                    .attr("fill", "none")
+                    .attr("stroke-width", 1.5)
+                    .attr("stroke-opacity", 0.7)
+                    .on("mouseover", function (event, d) {
+                        // Highlight the line
+                        d3.select(this)
+                            .attr("stroke-width", 3)
+                            .attr("stroke-opacity", 1);
 
-                    // Show tooltip
-                    tooltip
-                        .style("display", "block")
-                        .html(`<strong>${row["NAME"]}</strong>`); // Display city name
-                })
-                .on("mousemove", function (event) {
-                    // Move tooltip with cursor
-                    tooltip
-                        .style("left", `${event.pageX + 10}px`) // Offset from cursor
-                        .style("top", `${event.pageY}px`);
-                })
-                .on("mouseout", function () {
-                    // Reset line style
-                    d3.select(this)
-                        .attr("stroke-width", 1.5)
-                        .attr("stroke-opacity", 0.7);
+                        // Show tooltip
+                        tooltip
+                            .style("display", "block")
+                            .html(`<strong>${row["NAME"]}</strong>`); // Display city name
+                    })
+                    .on("mousemove", function (event) {
+                        // Move tooltip with cursor
+                        tooltip
+                            .style("left", `${event.pageX + 10}px`) // Offset from cursor
+                            .style("top", `${event.pageY}px`);
+                    })
+                    .on("mouseout", function () {
+                        // Reset line style
+                        d3.select(this)
+                            .attr("stroke-width", 1.5)
+                            .attr("stroke-opacity", 0.7);
 
-                    // Hide tooltip
-                    tooltip.style("display", "none");
-                });
-        });
+                        // Hide tooltip
+                        tooltip.style("display", "none");
+                    });
+            });
+
+            // Update legend with filtered city names
+            const legend = parallelSvg.append("g")
+                .attr("transform", `translate(${width + 30}, 10)`) // Position on the right
+                .selectAll(".legend-item")
+                .data(filteredData)
+                .enter()
+                .append("g")
+                .attr("class", "legend-item")
+                .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+
+            legend.append("rect")
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", (d, i) => colors[i % colors.length]);
+
+            legend.append("text")
+                .attr("x", 20)
+                .attr("y", 12)
+                .text((d) => d["NAME"]) // Display city names
+                .style("font-size", "12px");
+        }
+
+        // Attach updateChart function to checkbox change event
+        dropdownMenu.selectAll("input").on("change", updateChart);
+
+        // Draw the initial chart
+        updateChart();
     });
 });

@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallel Coordinates with Filter</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Student Housing by Municipality</h1>
-    <div id="distance-filter"></div>
-    <div id="chart"></div>
-
     <div id="parallel-plot-container">
         <h1>Parallel Coordinates Plot with Filters</h1>
 
@@ -26,17 +23,6 @@
         <!-- Parallel Plot -->
         <svg id="parallel-plot"></svg>
     </div>
-
-
-    <!-- Placeholder for Train Station Distance Filter -->
-
-
-    <script src="Glyphs.js"></script>
     <script src="parallel_plot.js"></script>
-
-    <script src="distance_filter.js"></script>
-
-
-
 </body>
 </html>
