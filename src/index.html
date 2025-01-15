@@ -9,34 +9,33 @@
 </head>
 <body>
     <h1>Student Housing by Municipality</h1>
+    
     <div id="distance-filter"></div>
     <div id="chart"></div>
 
-    <div id="parallel-plot-container">
-        <h1>Parallel Coordinates Plot with Filters</h1>
+    <!-- Container for Parallel Plot and Widgets -->
+    <div id="main-container">
+        <!-- Parallel Coordinates Plot -->
+        <div id="parallel-plot-container">
+            <h1>Parallel Coordinates Plot with Filters</h1>
 
-        <!-- Filter Section -->
-        <div id="filter-container">
-            <h4>Filter by City:</h4>
-            <div id="checkboxes"></div>
+            <!-- Parallel Plot -->
+            <svg id="parallel-plot"></svg>
         </div>
 
-        <!-- Tooltip -->
-        <div id="tooltip" style="display: none;"></div>
-
-        <!-- Parallel Plot -->
-        <svg id="parallel-plot"></svg>
-    </div>
-
-    <!-- Z-Score Scented Widgets Section -->
-    <h1>Z-Score Scented Widgets</h1>
-    <div id="widgets"></div>
+        <!-- Z-Score Scented Widgets -->
+        <div id="widgets-container">
+            <h1>Z-Score Scented Widgets</h1>
+            <div id="widgets"></div>
+            <div id="buttons-container">
+            </div>
+        </div>
+        
 
     <!-- Scripts -->
     <script src="Glyphs.js"></script>
     <script src="parallel_plot.js"></script>
     <script src="distance_filter.js"></script>
     <script src="scented_filter.js"></script>
-    
 </body>
 </html>

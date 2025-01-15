@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Attach updateChart function to the "Update Global Rankings" button
-        d3.select("body")
+        d3.select("#buttons-container")
             .append("button")
             .text("Update Parallel Coordinates Plot")
             .style("margin", "20px")

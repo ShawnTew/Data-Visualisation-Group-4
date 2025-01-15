@@ -35,9 +35,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
     const globalRankSection = d3.select("body")
         .append("div")
         .attr("id", "global-output")
-        .style("color", "white")
-        .style("margin-top", "20px");
-
+        .style("display", "none");
     // Function to calculate and display global rankings
     function calculateGlobalRankings() {
         const cityScores = cities.map(city => ({
@@ -162,7 +160,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
     });
 
     // Add "Update Rankings" button
-    d3.select("body")
+    d3.select("#buttons-container")
         .append("button")
         .text("Update Global Rankings")
         .style("margin", "20px")
