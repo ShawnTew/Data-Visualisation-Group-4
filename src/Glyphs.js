@@ -1,6 +1,7 @@
-const dataFile = "../data/Combination - amenities.csv";
+const dataFile = "../data/data_file.csv";
 
 const columns = ["z-score AMENITIES", "z-score CRIME", "z-score GREEN", "z-score HOUSEHOLDS", "z-score ADDITIONAL_HOUSING_COST", "z-score NET_HOUSING_COST", "z-score TOTAL_HOUSING_COST", "z-score HOUSING RATIO", "z-score NUMBER OF STUDENTS"];
+const shortNames = ["Amenities", "Crime", "Green", "Household", "Add. Housing Cost", "Net Housing Cost", "Total Housing Cost", "Housing Ratio", "Students"];
 
 d3.csv(dataFile).then(data => {
     data.forEach(d => {
@@ -42,7 +43,7 @@ d3.csv(dataFile).then(data => {
 
         const path = g.append("path")
             .datum(d) // Bind data to the path
-            .attr("d", radarLine(columns.map((col, i) => ({ axis: col, value: d[col] }))))
+            .attr("d", radarLine(columns.map((col, i) => ({axis: col, value: d[col]}))))
             .style("fill", "steelblue")
             .style("fill-opacity", 0.5)
             .style("stroke", "steelblue")
@@ -54,7 +55,7 @@ d3.csv(dataFile).then(data => {
             .append("g")
             .attr("class", "axis")
             .attr("transform", (d, i) => `rotate(${(i * 360 / columns.length)})`)
-            .each(function(d, i) {
+            .each(function (d, i) {
                 d3.select(this).append("line")
                     .attr("x1", 0)
                     .attr("y1", 0)
@@ -69,16 +70,21 @@ d3.csv(dataFile).then(data => {
             .enter()
             .append("text")
             .attr("class", "label")
-            .attr("x", (d, i) => outerRadius * Math.cos(angleSlice * i - Math.PI / 2))
-            .attr("y", (d, i) => outerRadius * Math.sin(angleSlice * i - Math.PI / 2))
+            .attr("x", (d, i) => (outerRadius + 10) * Math.cos(angleSlice * i - Math.PI / 2))
+            .attr("y", (d, i) => {
+                const angle = angleSlice * i;
+                const offset = angle > Math.PI / 4 && angle < 3 * Math.PI / 4 || angle > 5 * Math.PI / 4 && angle < 7 * Math.PI / 4 ? 40 : 15;
+                return (outerRadius + offset) * Math.sin(angle - Math.PI / 2);
+            })
             .attr("dy", "0.35em")
             .style("text-anchor", "middle")
-            .text(d => d.replace("z-score ", ""));
+            .style("font-size", "12px")
+            .text((d, i) => shortNames[i]);
 
         // Add hover interaction
-        path.on("mouseover", function(event, d) {
+        path.on("mouseover", function (event, d) {
             const labels = g.selectAll(".axis-label")
-                .data(columns.map((col, i) => ({ axis: col, value: d[col] })))
+                .data(columns.map((col, i) => ({axis: col, value: d[col]})))
                 .enter()
                 .append("g")
                 .attr("class", "axis-label")
@@ -96,7 +102,7 @@ d3.csv(dataFile).then(data => {
                 .style("text-anchor", "middle")
                 .style("font-size", "10px")
                 .text(d => d.value === -5 ? "NaN" : d.value);
-        }).on("mouseout", function() {
+        }).on("mouseout", function () {
             g.selectAll(".axis-label").remove();
         });
     });
