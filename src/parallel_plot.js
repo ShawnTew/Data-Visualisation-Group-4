@@ -1,8 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Set dimensions and margins
-    const margin = { top: 30, right: 150, bottom: 100, left: 40 };
-    const width = 1000 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    // Get the container width dynamically
+    const containerWidth = d3.select("#parallel-plot-container").node().getBoundingClientRect().width;
+    const containerHeight = d3.select("#parallel-plot-container").node().getBoundingClientRect().height;
+
+    // Set dynamic margins based on container size
+    const margin = {
+        top: containerHeight * 0.1,    // 5% of container height
+        right: containerWidth * 0.05,  // 15% of container width
+        bottom: containerHeight * 0.1, // 10% of container height
+        left: containerWidth * 0.05    // 5% of container width
+    };
+
+    // Calculate dynamic width and height
+    const width = containerWidth - margin.left - margin.right;
+    const height = containerHeight - margin.top - margin.bottom;
 
     // Tooltip for Parallel Coordinates
     const tooltip = d3.select("#parallel-plot-container #tooltip");
@@ -12,10 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Create SVG for the parallel plot
     const parallelSvg = d3.select("#parallel-plot-container #parallel-plot")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${containerWidth} ${containerHeight}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
+
+
+
+
 
     // Add a dropdown container for "NAME" filter
     const dropdownContainer = d3.select("#parallel-plot-container")
@@ -240,5 +256,69 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateChart();
             });
 
+
     });
+    window.addEventListener("resize", () => {
+        const containerWidth = d3.select("#parallel-plot-container").node().getBoundingClientRect().width;
+        const containerHeight = d3.select("#parallel-plot-container").node().getBoundingClientRect().height;
+
+        const margin = {
+            top: containerHeight * 0.1,
+            right: containerWidth * 0.05,
+            bottom: containerHeight * 0.1,
+            left: containerWidth * 0.05
+        };
+
+        const width = containerWidth - margin.left - margin.right;
+        const height = containerHeight - margin.top - margin.bottom;
+
+        // Update SVG dimensions
+        d3.select("#parallel-plot")
+            .attr("viewBox", `0 0 ${containerWidth} ${containerHeight}`)
+            .attr("preserveAspectRatio", "xMidYMid meet");
+
+        // Update scales and re-render axes and lines
+        xScale.range([0, width]);
+        Object.keys(yScales).forEach((col) => {
+            yScales[col].range([height, 0]);
+        });
+
+        parallelSvg.selectAll(".axis")
+            .attr("transform", (d) => `translate(${xScale(d)}, 0)`)
+            .call(d3.axisLeft(yScales[d]));
+
+        parallelSvg.selectAll(".line")
+            .attr("d", (d) => d3.line()
+                .x((p) => xScale(p.axis))
+                .y((p) => yScales[p.axis](+p.value))(d)
+            );
+
+        // Update legend
+        const legend = parallelSvg.selectAll(".legend-item").data(filteredData);
+
+        legend.enter()
+            .append("g")
+            .attr("class", "legend-item")
+            .merge(legend)
+            .attr("transform", (d, i) => `translate(${i * 150}, 0)`);
+
+        legend.selectAll("rect")
+            .data((d, i) => [d])
+            .join("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", (d, i) => colors[i % colors.length]);
+
+        legend.selectAll("text")
+            .data((d) => [d])
+            .join("text")
+            .attr("x", 20)
+            .attr("y", 12)
+            .text((d) => d["NAME"]);
+    });
+
+
+    window.dispatchEvent(new Event('resize'));
+
+
 });
