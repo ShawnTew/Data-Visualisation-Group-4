@@ -1,3 +1,6 @@
+let projection;
+let gemeentePoints = [];
+
 // Load the GeoJSON file and render the map
 d3.json("../data/nl.json") // Replace with the path to your new map
     .then(function(geojsonNew) {
@@ -19,10 +22,10 @@ d3.json("../data/nl.json") // Replace with the path to your new map
         const mapGroup = svg.append("g");
 
         // Render the new map
-        mapGroup.selectAll(".new-path")
+        mapGroup.selectAll(".geojson-path")
             .data(geojsonNew.features)
             .enter().append("path")
-            .attr("class", "new-path")
+            .attr("class", "geojson-path")
             .attr("d", function(d) {
                 const pathData = path(d);
                 if (!pathData) {
@@ -36,19 +39,19 @@ d3.json("../data/nl.json") // Replace with the path to your new map
             .attr("stroke-width", 0.5);
 
         // Load the GeoJSON file containing the points
-        d3.json("../data/gemeente_locations.geojson") // Replace with the path to your points GeoJSON file
+        d3.json("../data/gemeente_locations.geojson") 
             .then(function(pointsGeojson) {
                 // Load the CSV file containing the data
                 d3.csv("../data/data_file.csv").then(function(data) {
+
                     // Append points to represent the locations
-                    const points = mapGroup.selectAll(".point")
+                    const points = mapGroup.selectAll(".gemeente-point")
                         .data(pointsGeojson.features)
                         .enter().append("circle")
-                        .attr("class", "point")
+                        .attr("class", "gemeente-point")
                         .attr("cx", d => projection(d.geometry.coordinates)[0])
                         .attr("cy", d => projection(d.geometry.coordinates)[1])
-                        .attr("r", 3)
-                        .attr("fill", "black");
+                        .attr("r", 3);
 
                    // Append glyphs to represent the points at the specified locations
                     const glyphs = mapGroup.selectAll(".glyph")
@@ -135,6 +138,19 @@ d3.json("../data/nl.json") // Replace with the path to your new map
                         d3.select(this).selectAll(".label").style("display", "none"); // Hide the labels of the hovered glyph
                         cityNameText.style("display", "none");
                     });
+
+                    data.forEach(function(row) {
+                        const point = pointsGeojson.features.find(d => d.properties.naam.toLowerCase() === row.NAME.toLowerCase());
+                        if (point) {
+                            gemeentePoints.push({
+                                name: row.NAME.toLowerCase(),
+                                coordinates: point.geometry.coordinates
+                            });
+                        }
+                    });
+
+                    console.log("Gemeente Points:", gemeentePoints);
+
                 }).catch(function(error) {
                     console.error('Error loading or processing CSV data:', error);
                 });
@@ -223,4 +239,31 @@ function createGlyph(selection, cityData) {
             d3.selectAll(".glyph").style("opacity", 1); // Reset opacity of all glyphs
             d3.select(this).selectAll(".label").style("display", "none"); // Hide the labels of the hovered glyph
         });
+}
+
+function zoomToMunicipality(cityName, projection) {
+    const gemeente = gemeentePoints.find(g => g.name === cityName.toLowerCase());
+
+    if (gemeente) {
+        const [longitude, latitude] = gemeente.coordinates;
+        const [x, y] = projection([longitude, latitude]);
+
+        d3.selectAll(".gemeente-point").classed("highlight", false);
+
+        d3.selectAll(".gemeente-point")
+            .filter(d => d.properties.naam.toLowerCase() === cityName.toLowerCase())
+            .classed("highlight", true);
+
+        svg.transition()
+            .duration(750)
+            .call(
+                zoom.transform,
+                d3.zoomIdentity
+                    .translate(width / 2, height / 2)
+                    .scale(4)
+                    .translate(-x, -y)
+            );
+    } else {
+        console.error("Municipality not found:", cityName);
+    }
 }

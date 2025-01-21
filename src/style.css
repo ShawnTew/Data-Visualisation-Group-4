@@ -49,7 +49,7 @@ h1 {
 }
 
 .geojson-path {
-    fill: steelblue;
+    fill: rgb(150, 175, 225);
     stroke: rgb(255, 255, 255);
     stroke-width: 0.5px;
 }
