@@ -13,21 +13,74 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         <input type="range" id="timeSlider" min="0" max="300" value="150" step="10">
         <span id="timeValue">150</span>
         <br><br>
-        <button id="applyFilter">Apply Filter</button>
+<button id="applyFilter" style="padding: 5px; width: 100px; height: 30px; font-size: 14px;">Apply Filter</button>
         <div id="results" style="margin-top: 20px;">
             <h3>Filtered Results</h3>
-            <table id="results-table" style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <th>From Station</th>
-                        <th>From Municipality</th>
-                        <th>To Station</th>
-                        <th>To Municipality</th>
-                        <th>Fare Rate</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div style="max-height: 150px; overflow-y: auto; border: 1px solid #ccc;">
+                <table id="results-table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">From Station</th>
+                            <th style="width: 20%;">From Municipality</th>
+                            <th style="width: 20%;">To Station</th>
+                            <th style="width: 20%;">To Municipality</th>
+                            <th style="width: 20%;">Fare Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Placeholder rows for static layout -->
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     `;
 
@@ -69,7 +122,7 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
 
         updateTable(filteredData);
 
-        // Zoom the map to the preferred city
+        // Optionally zoom the map to the preferred city (if you have a map function)
         if (preferredCity) {
             zoomToMunicipality(preferredCity); // Call the zoom function from gemeente_map.js
         }
@@ -80,13 +133,25 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         resultsTableBody.innerHTML = ""; // Clear existing rows
 
         if (filteredData.length === 0) {
-            resultsTableBody.innerHTML = "<tr><td colspan='5'>No results found</td></tr>";
+            // Add placeholder rows for no results
+            for (let i = 0; i < 7; i++) {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                `;
+                resultsTableBody.appendChild(tr);
+            }
             return;
         }
 
         // Sort data by fareRate in ascending order
         const sortedData = filteredData.sort((a, b) => a.fareRate - b.fareRate);
 
+        // Populate rows
         sortedData.forEach(row => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -98,5 +163,19 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
             `;
             resultsTableBody.appendChild(tr);
         });
+
+        // Add placeholder rows to maintain static height
+        const extraRows = Math.max(0, 7 - sortedData.length);
+        for (let i = 0; i < extraRows; i++) {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            `;
+            resultsTableBody.appendChild(tr);
+        }
     }
 })();

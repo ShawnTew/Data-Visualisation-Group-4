@@ -30,6 +30,17 @@ h1 {
     font: 10px sans-serif;
 }
 
+#map {
+    position: relative;
+    overflow: hidden; /* Prevent overflow issues */
+    width: 80%; /* Reduce width to make it proportionate */
+    max-width: 900px; /* Set a max width */
+    margin: 20px auto; /* Center the container */
+    background-color: #f9f9f9; /* Light background for better contrast */
+    border: 2px solid black; /* Visible border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
 #map-container {
     width: 100%; 
     max-width: 800px; 
@@ -56,14 +67,16 @@ h1 {
 
 /* Gemeente points styling */
 .gemeente-point {
-    fill: red; /* Fill color for points */
-    stroke: black; /* Black border around points */
-    stroke-width: 0.2px;
+    fill: rgb(255, 75, 75); /* Fill color for points */
+    stroke: rgb(255, 75, 75); /* Black border around points */
+    stroke-width: 1px;
     opacity: 0.8; /* Slight transparency */
 }
 
 .gemeente-point.highlight {
     fill: yellow; /* Highlight color */
+    stroke: yellow; /* Black border around points */
+    stroke-width: 5px;
 }
 
 #parallel-coordinates {
