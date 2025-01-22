@@ -84,7 +84,7 @@ d3.json("../data/nl.json")
                         mapGroup.attr("transform", event.transform);
                 
                         // Show glyphs and hide points when zoomed in
-                        if (currentZoom > 12) {
+                        if (currentZoom > 5) {
                             points.style("display", "none");
                             glyphs.style("display", "block");
                         } else {
@@ -105,7 +105,7 @@ d3.json("../data/nl.json")
                         .attr("x", projection(d.geometry.coordinates)[0])
                         .attr("y", projection(d.geometry.coordinates)[1] - 10) // Position above the point
                         .attr("text-anchor", "middle")
-                        .style("font-size", "12px")
+                        .style("font-size", `${12 / d3.zoomTransform(svg.node()).k}px`) // Dynamic font size based on zoom level
                         .style("fill", "black")
                         .text(d.properties.naam); // Use the point's name
 
