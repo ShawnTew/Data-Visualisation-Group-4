@@ -8,18 +8,18 @@ d3.json("../data/nl.json")
     .then(function (geojsonNew) {
         // Set up the SVG element
         const width = window.innerWidth * 0.5; // 75% of the screen width
-        const height = 1.5 * width;
+        const height = 1.2 * width;
 
         svg = d3.select("#map").append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet") // Ensure responsive scaling
-        .style("width", "100%")
+        .style("width", "auto")
         .style("height", "auto");
 
         // Set up the projection and path generator
         projection = d3.geoMercator()
             .center([5.5, 52.2]) // Center the map on the Netherlands
-            .scale(10000) // Adjust the scale as needed
+            .scale(6000) // Adjust the scale as needed
             .translate([width / 2, height / 2]); // Center the map in the SVG element
 
         const path = d3.geoPath().projection(projection);
@@ -98,8 +98,21 @@ d3.json("../data/nl.json")
                     // Add hover interaction for points
                     points.on("mouseover", function (event, d) {
                         d3.select(this).style("opacity", 1);
+
+                        // Append a text element near the point to display its name
+                        mapGroup.append("text")
+                        .attr("class", "point-name")
+                        .attr("x", projection(d.geometry.coordinates)[0])
+                        .attr("y", projection(d.geometry.coordinates)[1] - 10) // Position above the point
+                        .attr("text-anchor", "middle")
+                        .style("font-size", "12px")
+                        .style("fill", "black")
+                        .text(d.properties.naam); // Use the point's name
+
                     }).on("mouseout", function () {
                         d3.select(this).style("opacity", 0.5);
+                        mapGroup.select(".point-name").remove();
+
                     });
 
                     // Add hover interaction for glyphs
@@ -126,12 +139,39 @@ d3.json("../data/nl.json")
                     // Apply Filter and Highlight Municipality
                     document.getElementById("applyFilter").addEventListener("click", () => {
                         const preferredCity = document.getElementById("preferredCity").value.trim().toLowerCase();
+                    
+                        // Reset any previous highlights
                         d3.selectAll(".gemeente-point").classed("highlight", false);
-                        d3.selectAll(".gemeente-point")
-                            .filter(d => d.properties.naam.toLowerCase() === preferredCity)
-                            .classed("highlight", true)
-                            .attr("stroke", "yellow")
-                            .attr("stroke-width", 2);
+                    
+                        // Find the municipality and highlight it
+                        const selectedPoint = d3.selectAll(".gemeente-point")
+                            .filter(d => d.properties.naam.toLowerCase() === preferredCity);
+                    
+                        if (!selectedPoint.empty()) {
+                            selectedPoint
+                                .classed("highlight", true)
+                                .attr("stroke", "yellow")
+                                .attr("stroke-width", 2);
+                    
+                            // Get the coordinates of the selected municipality
+                            const [x, y] = projection(selectedPoint.datum().geometry.coordinates);
+                    
+                            // Set the desired zoom level
+                            const zoomLevel = 7;
+                    
+                            // Programmatically zoom and center on the selected municipality
+                            svg.transition()
+                                .duration(750) // Animation duration in ms
+                                .call(
+                                    zoom.transform,
+                                    d3.zoomIdentity
+                                        .translate(width / 2, height / 2) // Center the map
+                                        .scale(zoomLevel) // Set zoom level
+                                        .translate(-x, -y) // Translate to center the municipality
+                                );
+                        } else {
+                            console.error("Municipality not found:", preferredCity);
+                        }
                     });
                 });
             });
