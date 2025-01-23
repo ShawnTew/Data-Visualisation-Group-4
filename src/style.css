@@ -34,7 +34,6 @@ h1 {
     position: relative;
     overflow: hidden; /* Prevent overflow issues */
     width: 80%; /* Reduce width to make it proportionate */
-    height: 60%;
     max-width: 900px; /* Set a max width */
     margin: 20px auto; /* Center the container */
     background-color: #f9f9f9; /* Light background for better contrast */
