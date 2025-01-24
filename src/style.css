@@ -239,8 +239,8 @@ button:hover {
 
 
 #bar-plot {
-    width: 100%;
-    max-width: 900px; /* Set a maximum width */
+    width: 93%;
+    /* max-width: 1000px; /* Set a maximum width */ 
     margin: 20px auto; /* Center the container */
     padding: 20px; /* Add padding inside the container */
     background-color: #ffffff; /* Light background color */
