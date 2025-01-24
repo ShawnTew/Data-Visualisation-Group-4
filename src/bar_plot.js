@@ -4,14 +4,16 @@
     // Add HTML structure for the bar plot
     container.innerHTML = `
         <h2>Bar Plot: Z-Scores by Attribute</h2>
-        <svg id="bar-chart" width="900" height="400"></svg>
+        <div style="display: flex; align-items: flex-start;">
+            <svg id="bar-chart" width="900" height="400" style="flex: 1;"></svg>
+            <div id="legend-container" style="margin-left: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></div>
+        </div>
     `;
 
     const tooltip = document.getElementById("tooltip");
 
     // Load the CSV data
     d3.csv("../data/data_file.csv").then(data => {
-        
         const attributes = [
             "z-score AMENITIES",
             "z-score CRIME",
@@ -31,16 +33,20 @@
         }));
 
         // Dimensions and margins
-        const margin = { top: 20, right: 300, bottom: 70, left: 50 };
-        const width = 1800 - margin.left - margin.right;
+        const margin = { top: 20, right: 20, bottom: 70, left: 50 };
+        const width = 1200 - margin.left - margin.right;
         const height = 400 - margin.top - margin.bottom;
 
         // Append the SVG element
         const svg = d3.select("#bar-chart")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
+            .attr("height", height + margin.top + margin.bottom);
+
+        // Add a group for zoom and pan
+        const zoomGroup = svg.append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const chartGroup = zoomGroup.append("g");
 
         // Set up scales
         const x0 = d3.scaleBand()
@@ -59,7 +65,7 @@
             .range([height, 0]);
 
         // Add axes
-        svg.append("g")
+        chartGroup.append("g")
             .attr("class", "x-axis")
             .attr("transform", `translate(0,${height})`)
             .call(d3.axisBottom(x0).tickSize(0))
@@ -68,22 +74,22 @@
             .style("font-size", "14px")
             .style("text-anchor", "end");
 
-        svg.append("g")
+        chartGroup.append("g")
             .attr("class", "y-axis")
             .call(d3.axisLeft(y));
 
         // Add dashed line at y=0
-        svg.append("line")
-            .attr("x1", 0) 
-            .attr("x2", width) 
-            .attr("y1", y(0)) 
-            .attr("y2", y(0)) 
-            .attr("stroke", "black") 
-            .attr("stroke-width", 1) 
-            .attr("stroke-dasharray", "4 4");            
+        chartGroup.append("line")
+            .attr("x1", 0)
+            .attr("x2", width)
+            .attr("y1", y(0))
+            .attr("y2", y(0))
+            .attr("stroke", "black")
+            .attr("stroke-width", 1)
+            .attr("stroke-dasharray", "4 4");
 
         // Add groups for each category
-        const categoryGroups = svg.selectAll(".category-group")
+        const categoryGroups = chartGroup.selectAll(".category-group")
             .data(data)
             .enter().append("g")
             .attr("class", "category-group")
@@ -101,7 +107,7 @@
             .on("mouseover", function (event, d) {
                 tooltip.style.display = "block";
                 tooltip.innerHTML = `Z-Score: ${d.value}`;
-                d3.select(this).style("opacity", 0.7); 
+                d3.select(this).style("opacity", 0.7);
             })
             .on("mousemove", function (event) {
                 tooltip.style.left = event.pageX + 10 + "px";
@@ -112,54 +118,55 @@
                 d3.select(this).style("opacity", 1);
             });
 
-        // Add legend
-        const legend = svg.append("g")
-            .attr("transform", `translate(${width + 20},20)`);
+        // Add zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([1, 5])
+            .translateExtent([[-500, -200], [width + 500, height + 200]])
+            .on("zoom", (event) => {
+                chartGroup.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Add legend to a separate container
+        const legendContainer = d3.select("#legend-container");
 
         // Add legend title
-        legend.append("text")
-            .attr("x", 20) 
-            .attr("y", 0) 
-            .attr("text-anchor", "start")
-            .style("font-size", "20px") 
-            .style("font-weight", "bold") 
+        legendContainer.append("div")
+            .style("font-size", "20px")
+            .style("font-weight", "bold")
             .text("Legend");
-        
+
         // Add Legend rows
         series.forEach((s, i) => {
-            const legendRow = legend.append("g")
-                .attr("transform", `translate(0,${i * 30})`)
+            const legendRow = legendContainer.append("div")
+                .style("display", "flex")
+                .style("align-items", "center")
                 .style("cursor", "pointer")
                 .on("mouseover", () => {
-                    svg.selectAll("rect")
+                    chartGroup.selectAll("rect")
                         .style("opacity", d => d.name === s.name ? 1 : 0.2);
                 })
                 .on("mouseout", () => {
-                    svg.selectAll("rect")
+                    chartGroup.selectAll("rect")
                         .style("opacity", 1);
                 });
 
-            legendRow.append("rect")
-                .attr("width", 10)
-                .attr("height", 10)
-                .attr("x", 20)
-                .attr("y", 30)
-                .attr("fill", d3.schemeCategory10[i]);
+            legendRow.append("div")
+                .style("width", "12px")
+                .style("height", "12px")
+                .style("margin-right", "8px")
+                .style("background-color", d3.schemeCategory10[i]);
 
-            legendRow.append("text")
-                .attr("x", 35)
-                .attr("y", 40)
-                .attr("text-anchor", "start")
+            legendRow.append("span")
                 .style("font-size", "12px")
-                .style("text-transform", "capitalize")
                 .text(s.name
-                    .replace("z-score ", "") 
-                    .replace(/_/g, " ") 
-                    .toLowerCase() 
-                    .split(" ") 
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
-                    .join(" ") 
-                );
+                    .replace("z-score ", "")
+                    .replace(/_/g, " ")
+                    .toLowerCase()
+                    .split(" ")
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" "));
         });
     });
 })();
