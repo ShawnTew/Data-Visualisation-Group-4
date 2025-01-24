@@ -36,9 +36,9 @@ h1 {
     width: 80%; /* Reduce width to make it proportionate */
     max-width: 900px; /* Set a max width */
     margin: 20px auto; /* Center the container */
-    background-color: #f9f9f9; /* Light background for better contrast */
-    border: 2px solid black; /* Visible border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    background-color: #ffffff; /* Light background for better contrast */
+    border: 0.01px solid rgb(138, 133, 133); /* Visible border */
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */*/
 }
 
 #map-container {
@@ -176,11 +176,6 @@ h1 {
     padding: 1%; /* Add padding to the container for less empty space around */
 }
 
-
-
-
-
-
 #parallel-plot-container {
     flex: 7; /* 75% width */
     display: flex;
@@ -216,7 +211,6 @@ h1 {
     overflow: auto; /* Allow scrolling if content exceeds height */
 }
 
-
 #widgets {
     display: flex;
     flex-direction: column;
@@ -244,4 +238,14 @@ button:hover {
 }
 
 
-
+#bar-plot {
+    width: 100%;
+    max-width: 900px; /* Set a maximum width */
+    margin: 20px auto; /* Center the container */
+    padding: 20px; /* Add padding inside the container */
+    background-color: #ffffff; /* Light background color */
+    border: 1px solid #ccc; /* Solid border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    overflow: hidden; /* Prevent content overflow */
+}

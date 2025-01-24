@@ -13,7 +13,7 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         <input type="range" id="timeSlider" min="0" max="300" value="150" step="10">
         <span id="timeValue">150</span>
         <br><br>
-<button id="applyFilter" style="padding: 5px; width: 100px; height: 30px; font-size: 14px;">Apply Filter</button>
+        <button id="applyFilter" style="padding: 5px; width: 100px; height: 30px; font-size: 14px;">Apply Filter</button>
         <div id="results" style="margin-top: 20px;">
             <h3>Filtered Results</h3>
             <div style="max-height: 150px; overflow-y: auto; border: 1px solid #ccc;">
