@@ -32,13 +32,13 @@ h1 {
 
 #map {
     position: relative;
-    overflow: hidden; /* Prevent overflow issues */
-    width: 80%; /* Reduce width to make it proportionate */
-    max-width: 900px; /* Set a max width */
-    margin: 20px auto; /* Center the container */
-    background-color: #ffffff; /* Light background for better contrast */
-    border: 0.01px solid rgb(138, 133, 133); /* Visible border */
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */*/
+    overflow: hidden; 
+    width: 80%; 
+    max-width: 900px; 
+    margin: 20px auto; 
+    background-color: #ffffff; 
+    border: 1px solid #ccc; 
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 }
 
 #map-container {
@@ -65,17 +65,16 @@ h1 {
     stroke-width: 0.5px;
 }
 
-/* Gemeente points styling */
 .gemeente-point {
-    fill: rgb(255, 75, 75); /* Fill color for points */
-    stroke: rgb(255, 75, 75); /* Black border around points */
+    fill: rgb(255, 75, 75); 
+    stroke: rgb(255, 75, 75); 
     stroke-width: 1px;
-    opacity: 0.8; /* Slight transparency */
+    opacity: 0.8; 
 }
 
 .gemeente-point.highlight {
-    fill: yellow; /* Highlight color */
-    stroke: yellow; /* Black border around points */
+    fill: yellow; 
+    stroke: yellow; 
     stroke-width: 5px;
 }
 
@@ -240,12 +239,12 @@ button:hover {
 
 #bar-plot {
     width: 93%;
-    /* max-width: 1000px; /* Set a maximum width */ 
-    margin: 20px auto; /* Center the container */
-    padding: 20px; /* Add padding inside the container */
-    background-color: #ffffff; /* Light background color */
-    border: 1px solid #ccc; /* Solid border */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    overflow: hidden; /* Prevent content overflow */
+    /* max-width: 1000px; */ 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #ffffff; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
 }

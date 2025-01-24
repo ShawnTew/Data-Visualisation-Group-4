@@ -1,4 +1,3 @@
-// Bar plot logic using D3.js
 (function createBarPlot() {
     const container = document.getElementById("bar-plot");
 
@@ -8,9 +7,11 @@
         <svg id="bar-chart" width="900" height="400"></svg>
     `;
 
+    const tooltip = document.getElementById("tooltip");
+
     // Load the CSV data
     d3.csv("../data/data_file.csv").then(data => {
-        // Extract relevant columns and z-scores
+        
         const attributes = [
             "z-score AMENITIES",
             "z-score CRIME",
@@ -71,6 +72,16 @@
             .attr("class", "y-axis")
             .call(d3.axisLeft(y));
 
+        // Add dashed line at y=0
+        svg.append("line")
+            .attr("x1", 0) 
+            .attr("x2", width) 
+            .attr("y1", y(0)) 
+            .attr("y2", y(0)) 
+            .attr("stroke", "black") 
+            .attr("stroke-width", 1) 
+            .attr("stroke-dasharray", "4 4");            
+
         // Add groups for each category
         const categoryGroups = svg.selectAll(".category-group")
             .data(data)
@@ -86,7 +97,20 @@
             .attr("y", d => y(d.value))
             .attr("width", x1.bandwidth())
             .attr("height", d => height - y(d.value))
-            .attr("fill", (d, i) => d3.schemeCategory10[i]);
+            .attr("fill", (d, i) => d3.schemeCategory10[i])
+            .on("mouseover", function (event, d) {
+                tooltip.style.display = "block";
+                tooltip.innerHTML = `Z-Score: ${d.value}`;
+                d3.select(this).style("opacity", 0.7); 
+            })
+            .on("mousemove", function (event) {
+                tooltip.style.left = event.pageX + 10 + "px";
+                tooltip.style.top = event.pageY - 20 + "px";
+            })
+            .on("mouseout", function () {
+                tooltip.style.display = "none";
+                d3.select(this).style("opacity", 1);
+            });
 
         // Add legend
         const legend = svg.append("g")
@@ -94,7 +118,7 @@
 
         // Add legend title
         legend.append("text")
-            .attr("x", 0) 
+            .attr("x", 20) 
             .attr("y", 0) 
             .attr("text-anchor", "start")
             .style("font-size", "20px") 
@@ -104,22 +128,38 @@
         // Add Legend rows
         series.forEach((s, i) => {
             const legendRow = legend.append("g")
-                .attr("transform", `translate(0,${i * 30})`);
+                .attr("transform", `translate(0,${i * 30})`)
+                .style("cursor", "pointer")
+                .on("mouseover", () => {
+                    svg.selectAll("rect")
+                        .style("opacity", d => d.name === s.name ? 1 : 0.2);
+                })
+                .on("mouseout", () => {
+                    svg.selectAll("rect")
+                        .style("opacity", 1);
+                });
 
             legendRow.append("rect")
                 .attr("width", 10)
                 .attr("height", 10)
-                .attr("x", 0)
+                .attr("x", 20)
                 .attr("y", 30)
                 .attr("fill", d3.schemeCategory10[i]);
 
             legendRow.append("text")
-                .attr("x", 15)
+                .attr("x", 35)
                 .attr("y", 40)
                 .attr("text-anchor", "start")
                 .style("font-size", "12px")
                 .style("text-transform", "capitalize")
-                .text(s.name.replace("z-score ", ""));
+                .text(s.name
+                    .replace("z-score ", "") 
+                    .replace(/_/g, " ") 
+                    .toLowerCase() 
+                    .split(" ") 
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
+                    .join(" ") 
+                );
         });
     });
 })();
