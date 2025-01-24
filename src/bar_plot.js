@@ -57,7 +57,7 @@
         const x1 = d3.scaleBand()
             .domain(series.map(d => d.name))
             .range([0, x0.bandwidth()])
-            .padding(0.03);
+            .padding(0.01);
 
         const y = d3.scaleLinear()
             .domain([d3.min(series.flatMap(d => d.values)) - 1, d3.max(series.flatMap(d => d.values)) + 1])
