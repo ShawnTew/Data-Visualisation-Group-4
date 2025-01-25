@@ -105,8 +105,9 @@
             .attr("height", d => height - y(d.value))
             .attr("fill", (d, i) => d3.schemeCategory10[i])
             .on("mouseover", function (event, d) {
+                const formattedName = formatAttributeName(d.name);
                 tooltip.style.display = "block";
-                tooltip.innerHTML = `Z-Score: ${d.value}`;
+                tooltip.innerHTML = `${formattedName}: ${d.value}`;
                 d3.select(this).style("opacity", 0.7);
             })
             .on("mousemove", function (event) {
@@ -160,13 +161,16 @@
 
             legendRow.append("span")
                 .style("font-size", "12px")
-                .text(s.name
-                    .replace("z-score ", "")
-                    .replace(/_/g, " ")
-                    .toLowerCase()
-                    .split(" ")
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" "));
+                .text(formatAttributeName(s.name));
         });
     });
 })();
+
+function formatAttributeName(name) {
+    return name.replace("z-score ", "")
+        .replace(/_/g, " ")
+        .toLowerCase()
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}

@@ -56,7 +56,7 @@ d3.json("../data/nl.json")
                         .attr("cx", d => projection(d.geometry.coordinates)[0])
                         .attr("cy", d => projection(d.geometry.coordinates)[1])
                         .attr("r", 3)
-                        .attr("fill", "red");
+                        .attr("fill", "black");
 
                     // Append glyphs to represent the points at the specified locations
                     const glyphs = mapGroup.selectAll(".glyph")
@@ -77,23 +77,56 @@ d3.json("../data/nl.json")
 
                     // Add zoom functionality
                     const zoom = d3.zoom()
-                    .scaleExtent([1, 20]) // Min and max zoom levels
-                    .translateExtent([[0, 0], [width, height]]) // Prevent panning outside map
-                    .on("zoom", (event) => {
-                        const currentZoom = event.transform.k;
-                        mapGroup.attr("transform", event.transform);
-                
-                        // Show glyphs and hide points when zoomed in
-                        if (currentZoom > 5) {
-                            points.style("display", "none");
-                            glyphs.style("display", "block");
-                        } else {
-                            points.style("display", "block");
-                            glyphs.style("display", "none");
-                        }
+                        .scaleExtent([1, 20]) // Min and max zoom levels
+                        .translateExtent([[0, 0], [width, height]]) // Prevent panning outside map
+                        .on("zoom", (event) => {
+                            const currentZoom = event.transform.k;
+                            mapGroup.attr("transform", event.transform);
+
+                            // Update stroke width based on zoom level
+                            mapGroup.selectAll(".geojson-path")
+                                .style("stroke-width", 0.5 / currentZoom); // Adjust stroke width
+
+                            // Show glyphs and hide points when zoomed in
+                            if (currentZoom > 5) {
+                                mapGroup.selectAll(".glyph").style("display", "block");
+                                mapGroup.selectAll(".gemeente-point").style("display", "none");
+                            } else {
+                                mapGroup.selectAll(".glyph").style("display", "none");
+                                mapGroup.selectAll(".gemeente-point").style("display", "block");
+                            }
+                            // Update zoom bar value
+                            document.getElementById("zoom-bar").value = currentZoom;
+                        });
+
+                    svg.call(zoom);
+
+                    // Add zoom bar interaction
+                    document.getElementById("zoom-bar").addEventListener("input", function() {
+                        const zoomLevel = +this.value;
+                        svg.transition()
+                            .duration(750)
+                            .call(zoom.scaleTo, zoomLevel);
                     });
-                
-                svg.call(zoom);
+
+                    // Add zoom in and zoom out button interactions
+                    document.getElementById("zoom-in").addEventListener("click", function() {
+                        const zoomBar = document.getElementById("zoom-bar");
+                        const zoomLevel = Math.min(+zoomBar.value + 0.1, 20);
+                        zoomBar.value = zoomLevel;
+                        svg.transition()
+                            .duration(750)
+                            .call(zoom.scaleTo, zoomLevel);
+                    });
+
+                    document.getElementById("zoom-out").addEventListener("click", function() {
+                        const zoomBar = document.getElementById("zoom-bar");
+                        const zoomLevel = Math.max(+zoomBar.value - 0.1, 1);
+                        zoomBar.value = zoomLevel;
+                        svg.transition()
+                            .duration(750)
+                            .call(zoom.scaleTo, zoomLevel);
+                    });
 
                     // Add hover interaction for points
                     points.on("mouseover", function (event, d) {
@@ -177,61 +210,89 @@ d3.json("../data/nl.json")
             });
     });
 
-    function createGlyph(selection, cityData) {
-        const columns = ["z-score AMENITIES", "z-score CRIME", "z-score GREEN", "z-score HOUSEHOLDS", "z-score ADDITIONAL_HOUSING_COST", "z-score NET_HOUSING_COST", "z-score TOTAL_HOUSING_COST", "z-score HOUSING RATIO", "z-score NUMBER OF STUDENTS"];
-        const shortNames = ["Amenities", "Crime", "Green", "Household", "Add. Housing Cost", "Net Housing Cost", "Total Housing Cost", "Housing Ratio", "Students"];
-    
-        const width = 10; // Adjust the width of the glyph
-        const outerRadius = width / 2;
-        const angleSlice = (2 * Math.PI) / columns.length;
-    
-        const rScale = d3.scaleLinear()
-            .range([0, outerRadius])
-            .domain([-5, 3]);
-    
-        const radarLine = d3.lineRadial()
-            .radius(d => rScale(d.value))
-            .angle((d, i) => i * angleSlice)
-            .curve(d3.curveLinearClosed);
-    
-        const g = selection.append("g");
-    
-        // Radar chart path
-        g.append("path")
-            .datum(columns.map(col => ({ axis: col, value: cityData[col] })))
-            .attr("d", radarLine)
-            .style("fill", "steelblue")
-            .style("fill-opacity", 0.5)
-            .style("stroke", "steelblue")
-            .style("stroke-width", 0.5); // Reduced stroke width
-    
-        // Axes for the radar chart
-        g.selectAll(".axis")
-            .data(columns)
-            .enter()
-            .append("line")
-            .attr("x1", 0)
-            .attr("y1", 0)
-            .attr("x2", (d, i) => outerRadius * Math.cos(angleSlice * i - Math.PI / 2))
-            .attr("y2", (d, i) => outerRadius * Math.sin(angleSlice * i - Math.PI / 2))
-            .style("stroke", "black")
-            .style("stroke-width", 0.1); // Reduced stroke width
-    
-        // Labels for axes
-        g.selectAll(".label")
-            .data(columns)
-            .enter()
-            .append("text")
-            .attr("class", "label")
-            .attr("x", (d, i) => (outerRadius + 0.1) * Math.cos(angleSlice * i - Math.PI / 2)) // Reduced distance from axes
-            .attr("y", (d, i) => (outerRadius + 0.1) * Math.sin(angleSlice * i - Math.PI / 2)) // Reduced distance from axes
-            .style("font-size", "0.8px") // Smaller font size
-            .style("text-anchor", (d, i) => {
-                const angle = angleSlice * i - Math.PI / 2;
-                if (Math.abs(angle) < Math.PI / 2) return "start"; // Right side
-                else if (Math.abs(angle) > Math.PI / 2) return "end"; // Left side
-                return "middle"; // Center
-            })
-            .text((d, i) => shortNames[i]);
-    }
-    
+function createGlyph(selection, cityData) {
+    const columns = ["z-score AMENITIES", "z-score CRIME", "z-score GREEN", "z-score HOUSEHOLDS", "z-score ADDITIONAL_HOUSING_COST", "z-score NET_HOUSING_COST", "z-score TOTAL_HOUSING_COST", "z-score HOUSING RATIO", "z-score NUMBER OF STUDENTS"];
+    const shortNames = ["Amenities", "Crime", "Green", "Household", "Add. Housing Cost", "Net Housing Cost", "Total Housing Cost", "Housing Ratio", "Students"];
+
+    const width = 10; // Adjust the width of the glyph
+    const outerRadius = width / 2;
+    const angleSlice = (2 * Math.PI) / columns.length;
+
+    const rScale = d3.scaleLinear()
+        .range([0, outerRadius])
+        .domain([-5, 3]);
+
+    const radarLine = d3.lineRadial()
+        .radius(d => rScale(d.value))
+        .angle((d, i) => i * angleSlice)
+        .curve(d3.curveLinearClosed);
+
+    const g = selection.append("g");
+
+    // Replace NaN values with -5 for drawing
+    const dataWithDefaults = columns.map(col => ({
+        axis: col,
+        value: isNaN(cityData[col]) ? -5 : cityData[col]
+    }));
+
+    // Radar chart path
+    g.append("path")
+        .datum(dataWithDefaults)
+        .attr("d", radarLine)
+        .style("fill", "steelblue")
+        .style("fill-opacity", 0.5)
+        .style("stroke", "steelblue")
+        .style("stroke-width", 0.08); // Reduced stroke width
+
+    // Axes for the radar chart
+    g.selectAll(".axis")
+        .data(columns)
+        .enter()
+        .append("line")
+        .attr("x1", 0)
+        .attr("y1", 0)
+        .attr("x2", (d, i) => outerRadius * Math.cos(angleSlice * i - Math.PI / 2))
+        .attr("y2", (d, i) => outerRadius * Math.sin(angleSlice * i - Math.PI / 2))
+        .style("stroke", "black")
+        .style("stroke-width", 0.05); // Reduced stroke width
+
+    // Labels for axes
+    const labels = g.selectAll(".label")
+        .data(columns)
+        .enter()
+        .append("text")
+        .attr("class", "label")
+        .attr("x", (d, i) => (outerRadius + 0.1) * Math.cos(angleSlice * i - Math.PI / 2)) // Reduced distance from axes
+        .attr("y", (d, i) => (outerRadius + 0.1) * Math.sin(angleSlice * i - Math.PI / 2)) // Reduced distance from axes
+        .style("font-size", "0.8px") // Smaller font size
+        .style("text-anchor", (d, i) => {
+            const angle = angleSlice * i - Math.PI / 2;
+            if (Math.abs(angle) < Math.PI / 2) return "start"; // Right side
+            else if (Math.abs(angle) > Math.PI / 2) return "end"; // Left side
+            return "middle"; // Center
+        })
+        .text((d, i) => shortNames[i])
+        .style("display", "none"); // Initially hide the labels
+
+    // Values for axes
+    const values = g.selectAll(".value")
+        .data(columns)
+        .enter()
+        .append("text")
+        .attr("class", "value")
+        .attr("x", (d, i) => rScale(dataWithDefaults[i].value) * Math.cos(angleSlice * i - Math.PI / 2) + 0.5 * Math.cos(angleSlice * i - Math.PI / 2)) // Position at the intersection with offset
+        .attr("y", (d, i) => rScale(dataWithDefaults[i].value) * Math.sin(angleSlice * i - Math.PI / 2) + 0.5 * Math.sin(angleSlice * i - Math.PI / 2)) // Position at the intersection with offset
+        .style("font-size", "0.4px") // Smaller font size
+        .style("text-anchor", "left")
+        .text((d, i) => isNaN(cityData[columns[i]]) ? "NaN" : cityData[columns[i]]) // Display NaN if the original value is NaN
+        .style("display", "none"); // Initially hide the values
+
+    // Add hover interaction
+    g.on("mouseover", function () {
+        d3.select(this).selectAll(".label").style("display", "block"); // Show the labels of the hovered glyph
+        d3.select(this).selectAll(".value").style("display", "block"); // Show the values of the hovered glyph
+    }).on("mouseout", function () {
+        d3.select(this).selectAll(".label").style("display", "none"); // Hide the labels of the hovered glyph
+        d3.select(this).selectAll(".value").style("display", "none"); // Hide the values of the hovered glyph
+    });
+}
