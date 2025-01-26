@@ -7,7 +7,7 @@ let mapGroup; // Global map group for reuse
 d3.json("../data/nl.json")
     .then(function (geojsonNew) {
         // Set up the SVG element
-        const width = window.innerWidth * 0.5; // 75% of the screen width
+        const width = window.innerWidth * 0.3; // 75% of the screen width
         const height = 1.2 * width;
 
         svg = d3.select("#map").append("svg")

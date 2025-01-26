@@ -2,11 +2,12 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
 
 (function createFilterUI() {
     const container = document.getElementById("distance-filter");
+    container.style.width = window.innerWidth * 0.35 + "px";
 
     // Add filter UI
     container.innerHTML = `
         <h2>Train Station Distance Filter</h2>
-        <label>Preferred Municipality:</label>
+        <label>Preferred City:</label>
         <input type="text" id="preferredCity" placeholder="e.g., Delft">
         <br><br>
         <label>Distance (Fare Rate):</label>
@@ -15,16 +16,13 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         <br><br>
         <button id="applyFilter" style="padding: 5px; width: 100px; height: 30px; font-size: 14px;">Apply Filter</button>
         <div id="results" style="margin-top: 20px;">
-            <h3>Filtered Results</h3>
+            <div id="fromCity" style="font-weight: bold;"></div>
             <div style="max-height: 150px; overflow-y: auto; border: 1px solid #ccc;">
                 <table id="results-table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th style="width: 20%;">From Station</th>
-                            <th style="width: 20%;">From Municipality</th>
-                            <th style="width: 20%;">To Station</th>
-                            <th style="width: 20%;">To Municipality</th>
-                            <th style="width: 20%;">Fare Rate</th>
+                            <th style="width: 50%;">To City</th>
+                            <th style="width: 50%;">Fare Rate</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,49 +30,28 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
                         <tr>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
+                        </tr>
+                        <tr>
                             <td>-</td>
                             <td>-</td>
                         </tr>
                         <tr>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
+                        </tr>
+                        <tr>
                             <td>-</td>
                             <td>-</td>
                         </tr>
                         <tr>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
                         </tr>
                         <tr>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
                         </tr>
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                         </tr>
@@ -89,6 +66,7 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
     const timeValue = document.getElementById("timeValue");
     const applyFilterButton = document.getElementById("applyFilter");
     const resultsTableBody = document.querySelector("#results-table tbody");
+    const fromCityDiv = document.getElementById("fromCity");
 
     let data = [];
 
@@ -99,7 +77,11 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
             fromCity: d.From_City,
             toStation: d.To_Station,
             toCity: d.To_City,
-            fareRate: +d.Fare_Rate
+            fareRate: +d.Fare_Rate,
+            fromLat: +d.From_Lat,
+            fromLon: +d.From_Lon,
+            toLat: +d.To_Lat,
+            toLon: +d.To_Lon
         }));
         console.log("CSV Data Loaded:", data);
     });
@@ -121,11 +103,6 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         });
 
         updateTable(filteredData);
-
-        // Optionally zoom the map to the preferred city (if you have a map function)
-        if (preferredCity) {
-            zoomToMunicipality(preferredCity); // Call the zoom function from gemeente_map.js
-        }
     };
 
     // Update table with filtered data
@@ -139,25 +116,23 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
                 tr.innerHTML = `
                     <td>-</td>
                     <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
                 `;
                 resultsTableBody.appendChild(tr);
             }
+            fromCityDiv.textContent = "";
             return;
         }
 
         // Sort data by fareRate in ascending order
         const sortedData = filteredData.sort((a, b) => a.fareRate - b.fareRate);
 
+        // Display the "From City" above the table
+        fromCityDiv.textContent = `From City: ${sortedData[0].fromCity}`;
+
         // Populate rows
         sortedData.forEach(row => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                <td>${row.fromStation}</td>
-                <td>${row.fromCity}</td>
-                <td>${row.toStation}</td>
                 <td>${row.toCity}</td>
                 <td>${row.fareRate}</td>
             `;
@@ -169,9 +144,6 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         for (let i = 0; i < extraRows; i++) {
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
                 <td>-</td>
                 <td>-</td>
             `;
