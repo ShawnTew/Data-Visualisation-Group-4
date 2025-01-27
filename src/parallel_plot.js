@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "z-score ADDITIONAL_HOUSING_COST": "Additional Housing Cost",
         "z-score NET_HOUSING_COST": "Net Housing Cost",
         "z-score TOTAL_HOUSING_COST": "Total Housing Cost",
-        "z-score HOUSING_RATIO": "Student Housing Ratio",
-        "z-score NUMBER_OF_STUDENTS": "No. of Students"
+        "z-score HOUSING RATIO": "Student Housing Ratio",
+        "z-score NUMBER OF STUDENTS": "No. of Students"
     };
 
     // Load CSV data for the parallel plot
