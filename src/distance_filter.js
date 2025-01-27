@@ -4,11 +4,14 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
     const container = document.getElementById("distance-filter");
     // Add filter UI
     container.innerHTML = `
-        <h2>Train Station Distance Filter</h2>
+        <h2>Fare Unit filter <span id="fare-rate-toggle" class="toggle-button"><i class="fas fa-info-circle"></i></span></h2> 
+        <h3>Filter the cities based on different fare units to show overview of Z-scores<span id="z-score_toggle" class="toggle-button"><i class="fas fa-info-circle"></i></span></h3>
+        <p id="fare-rate-toggle" class="toggle-button"></p><p id="fare-rate-explanation" class="hidden-text">Fare unit represents the cost of a train journey, based on the distance traveled. It includes a base fare and an additional charge per kilometer. A higher fare rate usually means a longer travel distance. The map shows glyphs of cities overall Z-scores.</p>
+        <p id="z-score_toggle" class="toggle-button"></p><p id="z-score_explanation" class="hidden-text">Z-score measures how many standard deviations a data point is from the mean of the dataset. It is calculated by subtracting the mean from the data point and dividing by the standard deviation. The Z-score standarises values, allowing for easy comparisons between cities.</p>
         <label>Preferred City:</label>
         <input type="text" id="preferredCity" placeholder="e.g., Delft">
         <br><br>
-        <label>Distance (Fare Rate):</label>
+        <label>Distance (Fare Unit):</label>
         <input type="range" id="timeSlider" min="0" max="300" value="150" step="10">
         <span id="timeValue">150</span>
         <br><br>
@@ -20,7 +23,7 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
                     <thead>
                         <tr>
                             <th style="width: 50%;">To City</th>
-                            <th style="width: 50%;">Fare Rate</th>
+                            <th style="width: 50%;">Fare Unit</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -6,6 +6,8 @@
     <title>Student Housing by Municipality</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style2.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+ 
 </head>
 <body>
     <!-- Header -->
@@ -20,7 +22,7 @@
         <div class="left-column">
             <!-- Description Section -->
             <div class="description-section">
-                <p>Welcome to the Student City Finder dashboard! This platform provides an interactive visualisation of student housing data, including accessibility, affordability, and connectivity across municipalities. Explore the map and filters to gain insights and make informed decisions. (can add dropdown for extra information, about z score and fare rate)</p>
+                <p>Welcome to the Student City Finder dashboard! This platform provides an interactive visualisation of student housing data, including accessibility, affordability, and connectivity across municipalities. Explore the map and filters to gain insights and make informed decisions.</p>
             </div>
 
             <!-- Map Section -->
@@ -45,8 +47,9 @@
     <div id="main-container">
         <!-- Parallel Coordinates Plot -->
         <div id="parallel-plot-container">
-            <h1>Parallel Coordinates Plot with Filters</h1>
-            <div id="tooltip" style="display: none;"></div>
+            <h1>Comparison of Key Z-Scores Across Top 5 Filtered Cities </h1>
+            
+            <div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #ccc; padding: 5px; border-radius: 3px; pointer-events: none;"></div>
 
             <!-- Parallel Plot -->
             <svg id="parallel-plot"></svg>
@@ -54,7 +57,7 @@
 
         <!-- Z-Score Scented Widgets -->
         <div id="widgets-container">
-            <h1>Z-Score Scented Widgets</h1>
+            <h1>City Attribute Preference Filter </h1>
             <div id="widgets"></div>
             <div id="buttons-container">
             </div>
@@ -70,5 +73,7 @@
     <script src="scented_filter.js"></script>
     <script src="Map.js"></script>
     <script src="bar_plot2.js"></script>
+    <script> document.getElementById('fare-rate-toggle').addEventListener('click', function() { const explanation = document.getElementById('fare-rate-explanation'); if (explanation.style.display === 'none' || explanation.style.display === '') { explanation.style.display = 'block'; } else { explanation.style.display = 'none'; } });</script>
+    <script> document.getElementById('z-score_toggle').addEventListener('click', function() { const explanation = document.getElementById('z-score_explanation'); if (explanation.style.display === 'none' || explanation.style.display === '') { explanation.style.display = 'block'; } else { explanation.style.display = 'none'; } });</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 
     // Add HTML structure for the bar plot
     container.innerHTML = `
-        <h2>Bar Plot: Z-Scores by Attribute</h2>
+        <h2>Overview of Attributes of All Cities</h2>
         <div style="display: flex; align-items: flex-start;">
             <svg id="bar-chart" width="100%" height="400"></svg>
             <div id="legend-container" style="margin-left: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></div>

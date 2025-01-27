@@ -189,6 +189,8 @@ html, body {
     border-radius: 8px; /* Smooth corners */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     overflow-x: auto; /* Allow horizontal scrolling if needed */
+    margin-bottom: 40px; /* Add space below the bar plot */
+
 }
 
 /* Axis and Labels */
@@ -244,7 +246,7 @@ html, body {
     border-radius: 3px;
 }
 
-
+.hidden-text { display: none; margin-top: 10px;}.toggle-button { color: grey; cursor: pointer; text-decoration: underline;}
 
 
 /* Optional: Make columns responsive */
