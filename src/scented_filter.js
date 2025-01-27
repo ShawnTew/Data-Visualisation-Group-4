@@ -9,10 +9,24 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
     // Extract the city names
     const cities = data.map(d => d["NAME"]);
 
-    // Prepare data for each z-score column
-    const attributeData = {};
-    zScoreColumns.forEach(col => {
-        attributeData[col] = data.map((d, i) => ({
+    // Manually map z-score columns to user-friendly names
+    const attributeData = {
+        "No. of Amenities": [],
+        "No. of Registered Crime": [],
+        "Percentage of Green Areas": [],
+        "No. of Households": [],
+        "Additional Housing Cost": [],
+        "Net Housing Cost": [],
+        "Total Housing Cost": [],
+        "Student Housing Ratio": [],
+        "No. of Students": []
+    };
+
+    // Prepare data for each z-score column with new attribute names (matching the legend)
+    zScoreColumns.forEach((col, index) => {
+        // Extract new labels manually based on your naming convention
+        const newLabel = Object.keys(attributeData)[index];
+        attributeData[newLabel] = data.map((d, i) => ({
             value: +d[col],   // Z-score value
             city: cities[i]   // City name
         })).filter(d => !isNaN(d.value)); // Remove rows with NaN values
@@ -20,7 +34,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
 
     // Store slider values globally
     const sliderValues = {};
-    zScoreColumns.forEach(col => sliderValues[col] = 0);
+    Object.keys(attributeData).forEach(col => sliderValues[col] = 0);
 
     // Container for widgets
     const container = d3.select("#widgets");
@@ -36,6 +50,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
         .append("div")
         .attr("id", "global-output")
         .style("display", "none");
+    
     // Function to calculate and display global rankings
     function calculateGlobalRankings() {
         const cityScores = cities.map(city => ({
@@ -68,7 +83,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
     Object.entries(attributeData).forEach(([label, values]) => {
         const widget = container.append("div").attr("class", "widget");
 
-        // Add label
+        // Add label using the manually set names
         widget.append("div").attr("class", "label").text(label);
 
         // Create SVG for histogram
@@ -159,18 +174,4 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
         slider.dispatch("input");
     });
 
-    // Add "Update Rankings" button
-    d3.select("#buttons-container")
-        .append("button")
-        .text("Update Global Rankings")
-        .style("margin", "20px")
-        .style("padding", "10px")
-        .style("background", "#007BFF")
-        .style("color", "white")
-        .style("border", "none")
-        .style("border-radius", "5px")
-        .style("cursor", "pointer")
-        .on("click", () => {
-            calculateGlobalRankings();
-        });
 });

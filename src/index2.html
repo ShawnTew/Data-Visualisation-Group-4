@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Housing by Municipality</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
-<header id="main-header">
-    <h1>Student Housing by Municipality</h1>
-</header>
-
 <body>
+    <!-- Header -->
+    <header id="main-header">
+        <h1>Student City Finder</h1>
+        <h2> Find your perfect city to study in!</h2>
+    </header>
 
-    <!-- Container for Map with Distance Filter -->
-    <div id="map-filter">
-        <div id="distance-filter-container">
-            <div id="distance-filter"></div>
-        </div>
-        <div id="map-container">
+    <!-- Main container for two columns -->
+    <div class="main-container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Description Section -->
+            <div class="description-section">
+                <p>Welcome to the Student City Finder dashboard! This platform provides an interactive visualisation of student housing data, including accessibility, affordability, and connectivity across municipalities. Explore the map and filters to gain insights and make informed decisions. (can add dropdown for extra information, about z score and fare rate)</p>
+            </div>
+
+            <!-- Map Section -->
             <div id="map">
                 <div id="zoom-bar-container">
                     <button id="zoom-out">-</button>
@@ -27,9 +32,14 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="chart"></div>
+        <!-- Right Column -->
+        <div class="right-column">
+            <div id="distance-filter">
+                <!-- Filter will be populated by JS -->
+            </div>
+        </div>
+    </div>
 
     <!-- Container for Parallel Plot and Widgets -->
     <div id="main-container">
@@ -59,6 +69,6 @@
     <script src="distance_filter.js"></script>
     <script src="scented_filter.js"></script>
     <script src="Map.js"></script>
-    <script src="bar_plot.js"></script>
+    <script src="bar_plot2.js"></script>
 </body>
 </html>

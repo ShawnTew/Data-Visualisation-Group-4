@@ -1,0 +1,255 @@
+/* Universal Font for the Entire Page */
+html, body {
+    font-family: 'Arial', sans-serif; /* Set a global font (Arial in this case) */
+    background-color: #fee391; /* Light grey background */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+/* Header Styling */
+#main-header {
+    background-color: #fe9929; /* Soft orange */
+    color: white; /* White text for contrast */
+    text-align: center;
+    padding: 5px; /* Adds some spacing */
+    box-shadow: none; /* Removes the box shadow */
+    border: none; /* Removes any border */
+    width: 100%; /* Ensures the header takes up the full page width */
+    margin: 0; /* Removes any margin around the header */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+#main-header h1{
+    font-size: 50px;
+}
+
+.description-section {
+    background-color: #fee391; /* Light background color */
+    padding: 15px; /* Increase the padding */
+    margin-bottom: 40px; /* Add space at the bottom */
+    font-size: 18px; /* Adjust text size if necessary */
+    border-radius: 10px; /* Rounded corners for a smooth look */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for some depth */
+}
+
+
+/* Main Container Styling */
+.main-container {
+    display: flex; /* Create a flexible layout */
+    gap: 20px; /* Add space between the columns */
+    margin: 20px; /* Add some margin around the container */
+}
+
+/* Left Column Styling */
+.left-column {
+    flex: 1; /* Take up equal space */
+    background-color: #f9f9f9; /* Light background for separation */
+    padding: 15px; /* Inner padding */
+    box-shadow: none; /* Subtle shadow */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Smooth corners */
+}
+
+/* Right Column Styling */
+.right-column {
+    flex: 1; /* Take up equal space */
+    background-color: #f9f9f9; /* A grey for contrast */
+    padding: 15px; /* Inner padding */
+    box-shadow: none; /* Subtle shadow */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Smooth corners */
+}
+
+/* Distance Filter: Full Container Fit */
+#distance-filter {
+    display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    justify-content: space-between; /* Spread items evenly */
+    align-items: stretch; /* Stretch children to container's width */
+    width: 100%; /* Full width of the parent container */
+    height: 100%; /* Full height of the parent container */
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px; /* Inner spacing */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+/* Results Section */
+#results {
+    flex-grow: 1; /* Allow the results section to expand */
+    overflow: hidden; /* Prevent content overflow */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Scrollable Results Table */
+#results div:nth-child(2) {
+    flex-grow: 1; /* Make the table take up the remaining space */
+    overflow-y: auto; /* Add scroll for large content */
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px; /* Smooth corners */
+    box-sizing: border-box;
+}
+
+/* Table Styling */
+#results table {
+    width: 100%; /* Full width */
+    height: 100%; /* Take up all available height */
+    border-collapse: collapse;
+}
+
+#results table th,
+#results table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+#results table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Button Styling */
+#distance-filter button {
+    margin-top: auto; /* Push the button to the bottom */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%; /* Full width */
+    transition: background-color 0.3s ease;
+}
+
+#distance-filter button:hover {
+    background-color: #0056b3;
+}
+
+/* Parallel Plot and Widgets Container */
+#main-container {
+    display: flex; /* Set up a horizontal flex layout */
+    gap: 20px; /* Add space between the two columns */
+    margin: 20px auto; /* Add some margin and center align */
+    padding: 10px; /* Add padding around the container */
+    box-sizing: border-box;
+}
+
+/* Parallel Plot Container */
+#parallel-plot-container {
+    flex: 2; /* Take up more space than widgets */
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 15px; /* Inner padding */
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* SVG Styling for Parallel Plot */
+#parallel-plot {
+    width: 100%;
+    height: 500px; /* Fixed height for the plot */
+}
+
+/* Widgets Container */
+#widgets-container {
+    flex: 1; /* Take up less space than the plot */
+    background-color: #f9f9f9; /* Light grey background */
+    padding: 15px; /* Inner padding */
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Widgets Content Styling */
+#widgets {
+    flex-grow: 1; /* Allow widgets section to expand */
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+
+#buttons-container {
+    margin-top: 20px; /* Add spacing at the bottom */
+}
+
+/* Bar Plot Styling */
+#bar-plot {
+    width: 100%;
+    max-width: 90%;
+    margin: 20px auto; /* Center the bar plot */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* Axis and Labels */
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 12px; /* Increase axis font size */
+    fill: #333;
+}
+
+.x-axis text {
+    transform: rotate(-45deg); /* Rotate x-axis labels */
+    text-anchor: end; /* Align rotated labels */
+}
+
+/* Gridlines */
+.gridline {
+    stroke: #ddd;
+    stroke-dasharray: 2, 2;
+}
+
+/* Bars */
+.bar {
+    stroke-width: 1px;
+    stroke: #333;
+}
+
+/* Legend Styling */
+.legend {
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+
+
+
+/* Optional: Make columns responsive */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+}

@@ -1,20 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Set dimensions and margins
-    // Get the container width dynamically
     const containerWidth = d3.select("#parallel-plot-container").node().getBoundingClientRect().width;
     const containerHeight = d3.select("#parallel-plot-container").node().getBoundingClientRect().height;
 
     // Set dynamic margins based on container size
     const margin = {
-        top: containerHeight * 0.1,    // 5% of container height
-        right: containerWidth * 0.05,  // 15% of container width
-        bottom: containerHeight * 0.1, // 10% of container height
+        top: containerHeight * 0.1,    // 10% of container height
+        right: containerWidth * 0.05,  // 5% of container width
+        bottom: containerHeight * 0.2, // Increased bottom margin for the legend
         left: containerWidth * 0.05    // 5% of container width
     };
-
-    // Calculate dynamic width and height
+    
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
+    
+    // Adjust SVG height to accommodate space for the legend
+    const adjustedHeight = height + 150; // Extra space for labels and legend
+    d3.select("#parallel-plot-container #parallel-plot")
+        .attr("height", adjustedHeight + margin.top + margin.bottom);
 
     // Tooltip for Parallel Coordinates
     const tooltip = d3.select("#parallel-plot-container #tooltip");
@@ -29,54 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-
-
-
-
-    // Add a dropdown container for "NAME" filter
-    const dropdownContainer = d3.select("#parallel-plot-container")
-        .append("div")
-        .attr("id", "dropdown-container")
-        .style("margin-bottom", "20px");
-
-    // Create dropdown button
-    dropdownContainer.append("button")
-        .attr("id", "dropdown-button")
-        .text("Select Cities")
-        .style("display", "none")
-        .style("margin-right", "10px")
-        .style("padding", "5px 10px");
-
-    // Create the dropdown menu
-    const dropdownMenu = dropdownContainer.append("div")
-        .attr("id", "dropdown-menu")
-        .style("display", "none") // Initially hidden
-        .style("position", "absolute")
-        .style("background-color", "#fff")
-        .style("border", "1px solid #ccc")
-        .style("padding", "10px")
-        .style("z-index", "1000");
+    // Manually map z-score columns to user-friendly names
+    const attributeNameMap = {
+        "z-score AMENITIES": "No. of Amenities",
+        "z-score CRIME": "No. of Registered Crime",
+        "z-score GREEN": "Percentage of Green Areas",
+        "z-score HOUSEHOLDS": "No. of Households",
+        "z-score ADDITIONAL_HOUSING_COST": "Additional Housing Cost",
+        "z-score NET_HOUSING_COST": "Net Housing Cost",
+        "z-score TOTAL_HOUSING_COST": "Total Housing Cost",
+        "z-score HOUSING_RATIO": "Student Housing Ratio",
+        "z-score NUMBER_OF_STUDENTS": "No. of Students"
+    };
 
     // Load CSV data for the parallel plot
     d3.csv("../data/combine new cities  - Output.csv").then(function (data) {
         const zScoreCols = Object.keys(data[0]).filter((col) => col.includes("z-score"));
         const cityNames = [...new Set(data.map((d) => d["NAME"]))]; // Unique city names
-
-        // Add checkboxes to dropdown menu
-        dropdownMenu.selectAll("label")
-            .data(cityNames)
-            .enter()
-            .append("label")
-            .style("display", "block")
-            .html((d) => `
-                <input type="checkbox" value="${d}" checked> ${d}
-            `);
-
-        // Toggle dropdown menu visibility
-        d3.select("#dropdown-button").on("click", () => {
-            const isVisible = dropdownMenu.style("display") === "block";
-            dropdownMenu.style("display", isVisible ? "none" : "block");
-        });
 
         // Set scales for each axis
         const yScales = {};
@@ -105,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 .attr("transform", `translate(${xScale(col)}, 0)`)
                 .call(axis);
 
-            // Clean the column name by removing "z-score"
-            const cleanLabel = col.replace(/z-score\s*/i, ""); // Clean text
+            // Use the manual names for the labels
+            const cleanLabel = attributeNameMap[col] || col.replace(/z-score\s*/i, ""); // Get the manually set label
 
             // Add group for axis label
             const labelGroup = parallelSvg.append("g")
@@ -118,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .style("font-size", "10px")
                 .style("fill", "black")
                 .style("font-weight", "bold")
-                .text(cleanLabel)
+                .text(cleanLabel)  // Use the manually set label here
                 .call(wrap, 70); // Wrap if width exceeds 70px
         });
 
@@ -157,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Updated updateChart function
+        // Function to update the chart based on selected cities and rankings
         function updateChart() {
             // Ensure global rankings are available
             if (typeof globalRankings === "undefined" || globalRankings.length === 0) {
@@ -244,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Attach updateChart function to the "Update Global Rankings" button
         d3.select("#buttons-container")
             .append("button")
-            .text("Update Parallel Coordinates Plot")
+            .text("Filter")
             .style("margin", "20px")
             .style("padding", "10px")
             .style("background", "#007BFF")
@@ -255,70 +227,5 @@ document.addEventListener("DOMContentLoaded", () => {
             .on("click", () => {
                 updateChart();
             });
-
-
     });
-    window.addEventListener("resize", () => {
-        const containerWidth = d3.select("#parallel-plot-container").node().getBoundingClientRect().width;
-        const containerHeight = d3.select("#parallel-plot-container").node().getBoundingClientRect().height;
-
-        const margin = {
-            top: containerHeight * 0.1,
-            right: containerWidth * 0.05,
-            bottom: containerHeight * 0.1,
-            left: containerWidth * 0.05
-        };
-
-        const width = containerWidth - margin.left - margin.right;
-        const height = containerHeight - margin.top - margin.bottom;
-
-        // Update SVG dimensions
-        d3.select("#parallel-plot")
-            .attr("viewBox", `0 0 ${containerWidth} ${containerHeight}`)
-            .attr("preserveAspectRatio", "xMidYMid meet");
-
-        // Update scales and re-render axes and lines
-        xScale.range([0, width]);
-        Object.keys(yScales).forEach((col) => {
-            yScales[col].range([height, 0]);
-        });
-
-        parallelSvg.selectAll(".axis")
-            .attr("transform", (d) => `translate(${xScale(d)}, 0)`)
-            .call(d3.axisLeft(yScales[d]));
-
-        parallelSvg.selectAll(".line")
-            .attr("d", (d) => d3.line()
-                .x((p) => xScale(p.axis))
-                .y((p) => yScales[p.axis](+p.value))(d)
-            );
-
-        // Update legend
-        const legend = parallelSvg.selectAll(".legend-item").data(filteredData);
-
-        legend.enter()
-            .append("g")
-            .attr("class", "legend-item")
-            .merge(legend)
-            .attr("transform", (d, i) => `translate(${i * 150}, 0)`);
-
-        legend.selectAll("rect")
-            .data((d, i) => [d])
-            .join("rect")
-            .attr("width", 15)
-            .attr("height", 15)
-            .attr("fill", (d, i) => colors[i % colors.length]);
-
-        legend.selectAll("text")
-            .data((d) => [d])
-            .join("text")
-            .attr("x", 20)
-            .attr("y", 12)
-            .text((d) => d["NAME"]);
-    });
-
-
-    window.dispatchEvent(new Event('resize'));
-
-
 });

@@ -1,3 +1,43 @@
+
+/* Style for the header */
+#main-header {
+    background-color: #f4a261; /* Same background color */
+    color: white; /* Same text color */
+    text-align: center;
+    padding: 2px 0; /* Reduce vertical padding */
+    font-size: 1.8rem; /* Reduce font size */
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add spacing below the header */
+    line-height: 1.2; /* Adjust line height for a tighter look */
+}
+
+#description-and-content {
+    display: flex;
+    flex-direction: row; /* Align content horizontally */
+    gap: 2%; /* Add space between the description and filter */
+    margin: 20px auto;
+    max-width: 90%;
+    padding: 10px;
+    align-items: flex-start; /* Align items at the top */
+}
+
+/* Styling for the description text */
+#description-container {
+    margin: 20px auto;
+    max-width: 900px; /* Limit the width for better readability */
+    text-align: center; /* Center align the text */
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem; /* Adjust font size */
+    line-height: 1.6; /* Increase line spacing for readability */
+    color: #333; /* Neutral text color */
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
+    background: none; /* Remove background color */
+    box-shadow: none; /* Remove shadow */
+}
+
+
 /* General body and chart styling */
 body {
     font-family: Arial, sans-serif;
@@ -300,9 +340,22 @@ button:hover {
 }
 
 #distance-filter-container {
-    flex: 1;
-    margin-left: 20px;
-    box-sizing: border-box;
-    padding: 0;
-    border: none;
+    flex: 1; /* Allocate less space for the filter */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+}
+
+#map-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 900px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

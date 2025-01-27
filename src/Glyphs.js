@@ -1,7 +1,18 @@
 const dataFile = "../data/data_file.csv";
 
 const columns = ["z-score AMENITIES", "z-score CRIME", "z-score GREEN", "z-score HOUSEHOLDS", "z-score ADDITIONAL_HOUSING_COST", "z-score NET_HOUSING_COST", "z-score TOTAL_HOUSING_COST", "z-score HOUSING RATIO", "z-score NUMBER OF STUDENTS"];
-const shortNames = ["Amenities", "Crime", "Green", "Household", "Add. Housing Cost", "Net Housing Cost", "Total Housing Cost", "Housing Ratio", "Students"];
+const shortNames = [
+    "No. of Amenities", 
+    "No. of Registered Crime", 
+    "Percentage of Green Areas", 
+    "No. of Households", 
+    "Additional Housing Cost", 
+    "Net Housing Cost", 
+    "Total Housing Cost", 
+    "Student Housing Ratio", 
+    "No. of Students"
+];
+
 
 d3.csv(dataFile).then(data => {
     data.forEach(d => {

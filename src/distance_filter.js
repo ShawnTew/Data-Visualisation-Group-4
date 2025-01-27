@@ -2,8 +2,6 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
 
 (function createFilterUI() {
     const container = document.getElementById("distance-filter");
-    container.style.width = window.innerWidth * 0.35 + "px";
-
     // Add filter UI
     container.innerHTML = `
         <h2>Train Station Distance Filter</h2>
@@ -17,7 +15,7 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
         <button id="applyFilter" style="padding: 5px; width: 100px; height: 30px; font-size: 14px;">Apply Filter</button>
         <div id="results" style="margin-top: 20px;">
             <div id="fromCity" style="font-weight: bold;"></div>
-            <div style="max-height: 150px; overflow-y: auto; border: 1px solid #ccc;">
+            <div style="max-height: 500px; overflow-y: auto; border: 1px solid #ccc;">
                 <table id="results-table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
                     <thead>
                         <tr>

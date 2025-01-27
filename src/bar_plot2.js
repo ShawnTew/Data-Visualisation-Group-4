@@ -5,12 +5,25 @@
     container.innerHTML = `
         <h2>Bar Plot: Z-Scores by Attribute</h2>
         <div style="display: flex; align-items: flex-start;">
-            <svg id="bar-chart" width="900" height="400" style="flex: 1;"></svg>
+            <svg id="bar-chart" width="100%" height="400"></svg>
             <div id="legend-container" style="margin-left: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></div>
         </div>
     `;
 
     const tooltip = document.getElementById("tooltip");
+
+    // Map for the attribute names to display in the legend and tooltip
+    const attributeNameMap = {
+        "z-score AMENITIES": "No. of Amenities",
+        "z-score CRIME": "No. of Registered Crime",
+        "z-score GREEN": "Percentage of Green Areas",
+        "z-score HOUSEHOLDS": "No. of Households",
+        "z-score ADDITIONAL_HOUSING_COST": "Additional Housing Cost",
+        "z-score NET_HOUSING_COST": "Net Housing Cost",
+        "z-score TOTAL_HOUSING_COST": "Total Housing Cost",
+        "z-score HOUSING_RATIO": "Student Housing Ratio",
+        "z-score NUMBER_OF_STUDENTS": "No. of Students"
+    };
 
     // Load the CSV data
     d3.csv("../data/data_file.csv").then(data => {
@@ -22,8 +35,8 @@
             "z-score ADDITIONAL_HOUSING_COST",
             "z-score NET_HOUSING_COST",
             "z-score TOTAL_HOUSING_COST",
-            "z-score HOUSING RATIO",
-            "z-score NUMBER OF STUDENTS"
+            "z-score HOUSING_RATIO",
+            "z-score NUMBER_OF_STUDENTS"
         ];
 
         const categories = data.map(d => d.NAME);
@@ -33,8 +46,8 @@
         }));
 
         // Dimensions and margins
-        const margin = { top: 20, right: 20, bottom: 100, left: 50 };  // Increased bottom margin for x-axis labels
-        const width = 1200 - margin.left - margin.right;
+        const margin = { top: 20, right: 20, bottom: 100, left: 50 };
+        const width = container.offsetWidth - margin.left - margin.right;
         const height = 400 - margin.top - margin.bottom;
 
         // Append the SVG element
@@ -135,7 +148,7 @@
             .attr("height", d => height - y(d.value))
             .attr("fill", (d, i) => d3.schemeTableau10[i])
             .on("mouseover", function (event, d) {
-                const formattedName = formatAttributeName(d.name);
+                const formattedName = attributeNameMap[d.name] || d.name;  // Use map to format the name
                 tooltip.style.display = "block";
                 tooltip.innerHTML = `${formattedName}: ${d.value}`;
                 d3.select(this).style("opacity", 0.7);
@@ -203,16 +216,8 @@
 
             legendRow.append("span")
                 .style("font-size", "12px")
-                .text(formatAttributeName(s.name));
+                .text(attributeNameMap[s.name] || s.name);  // Use map to format the name
         });
     });
 })();
 
-function formatAttributeName(name) {
-    return name.replace("z-score ", "")
-        .replace(/_/g, " ")
-        .toLowerCase()
-        .split(" ")
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-}
