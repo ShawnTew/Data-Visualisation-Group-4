@@ -93,16 +93,16 @@
             .call(d3.axisLeft(y));
 
         // Add axis labels
-        svg.append("text")             
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0 - margin.left)
-            .attr("x", 0 - (height / 2))
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .style("font-size", "16px")
-            .text("Z-Scores");
+        const yAxisLabel = svg.append("text")
+            .attr("transform", "rotate(-90)") // Rotate the text for vertical alignment
+            .attr("y", margin.left / 1 - 15) // Adjust position based on left margin
+            .attr("x", -height / 2) // Center along the y-axis
+            .attr("dy", "-1em") // Move slightly left
+            .style("text-anchor", "middle") // Center text horizontally
+            .style("font-size", "14px") // Font size for the label
+            .text("Z-Scores"); // Text for the y-axis
 
-        svg.append("text")             
+        const xAxisLabel = svg.append("text")
             .attr("x", width / 2)
             .attr("y", height + margin.bottom - 10)
             .style("text-anchor", "middle")
@@ -176,13 +176,19 @@
 
         // Add zoom behavior
         const zoom = d3.zoom()
-            .scaleExtent([1, 5])
+            .scaleExtent([0.8, 5])
+            
             .translateExtent([[-500, -200], [width + 500, height + 200]])
             .on("zoom", (event) => {
                 chartGroup.attr("transform", event.transform);
+                // Update x-axis label position with zoom
+                xAxisLabel.attr("x", event.transform.x + width / 2);
+                xAxisLabel.attr("y", event.transform.y + height + margin.bottom);
             });
 
         svg.call(zoom);
+
+        const initialTransform = d3.zoomIdentity.scale(0.8);svg.call(zoom.transform, initialTransform);
 
         // Add legend to a separate container
         const legendContainer = d3.select("#legend-container");
@@ -220,4 +226,3 @@
         });
     });
 })();
-
