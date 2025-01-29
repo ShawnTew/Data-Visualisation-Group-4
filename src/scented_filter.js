@@ -18,7 +18,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
         "Additional Housing Cost": [],
         "Net Housing Cost": [],
         "Total Housing Cost": [],
-        "Student Housing Ratio": [],
+        "Housing Ratio": [],
         "No. of Students": []
     };
 

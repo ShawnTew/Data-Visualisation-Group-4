@@ -248,6 +248,47 @@ html, body {
 
 .hidden-text { display: none; margin-top: 10px;}.toggle-button { color: grey; cursor: pointer; text-decoration: underline;}
 
+/* Apply styles to the table */
+.styled-table {
+    width: 80%; /* Adjust width of the table */
+    margin: 20px auto; /* Center the table */
+    border-collapse: collapse; /* Remove spacing between borders */
+    background-color: white; /* White background for the table */
+}
+
+/* Style the header row */
+.styled-table th {
+    background-color: #f2b13b; /* Fill header with soft yellow-orange */
+    color: white; /* White text for header */
+    text-align: left; /* Left-align header text */
+    padding: 12px 15px; /* Add padding to the header */
+    font-size: 14px; /* Slightly smaller font for header */
+}
+
+/* Style the table rows */
+.styled-table td {
+    padding: 8px 15px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Add bottom border for each row */
+}
+
+/* Add a border around the table */
+.styled-table, .styled-table th, .styled-table td {
+    border: 1px solid #ccc; /* Light gray border */
+}
+
+/* Add hover effect on table rows */
+.styled-table tr:hover {
+    background-color: #f1f1f1; /* Change row color on hover */
+}
+
+/* Title for the sources section */
+#sources-title {
+    text-align: center; /* Center the title */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold; /* Make title bold */
+    margin-bottom: 20px; /* Add space below the title */
+}
 
 /* Optional: Make columns responsive */
 @media (max-width: 768px) {

@@ -21,7 +21,7 @@
         "z-score ADDITIONAL_HOUSING_COST": "Additional Housing Cost",
         "z-score NET_HOUSING_COST": "Net Housing Cost",
         "z-score TOTAL_HOUSING_COST": "Total Housing Cost",
-        "z-score HOUSING RATIO": "Student Housing Ratio",
+        "z-score HOUSING RATIO": "Housing Ratio",
         "z-score NUMBER OF STUDENTS": "No. of Students"
     };
 

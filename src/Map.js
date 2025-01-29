@@ -220,7 +220,7 @@ function createGlyph(selection, cityData) {
         "Additional Housing Cost", 
         "Net Housing Cost", 
         "Total Housing Cost", 
-        "Student Housing Ratio", 
+        "Housing Ratio", 
         "No. of Students"
     ];
     
