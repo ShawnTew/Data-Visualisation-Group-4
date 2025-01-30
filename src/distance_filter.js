@@ -93,9 +93,19 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
     };
 
     // Apply filter logic
+// Apply filter logic
     applyFilterButton.onclick = () => {
         const preferredCity = preferredCityInput.value.trim().toLowerCase();
         const maxFareRate = +timeSlider.value;
+
+        // Check if the entered city exists in the dataset
+        const cityExists = data.some(row => row.fromCity.toLowerCase() === preferredCity);
+
+        if (!cityExists && preferredCity) {
+            fromCityDiv.textContent = "Sorry, the city you searched is not in the potential list.";
+            resultsTableBody.innerHTML = ""; // Clear table
+            return;
+        }
 
         // Filter data based on fromCity only
         const filteredData = data.filter(row => {
@@ -105,6 +115,7 @@ const csvUrl = '../data/combined_station_fares_21cities.csv';
 
         updateTable(filteredData);
     };
+
 
     // Update table with filtered data
     function updateTable(filteredData) {

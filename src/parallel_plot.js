@@ -54,9 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const yScales = {};
         zScoreCols.forEach((col) => {
             yScales[col] = d3.scaleLinear()
-                .domain([-3, 3]) // Fixed range for z-scores
+                .domain([-4, 4]) // Fixed range for z-scores
                 .range([height, 0]); // Map to vertical axis
         });
+
+
 
         // Create x-scale for axes
         const xScale = d3.scalePoint()
@@ -149,8 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Draw filtered paths
             const line = d3.line()
-                .x((d) => xScale(d.axis)) // Map axis position
-                .y((d) => yScales[d.axis](+d.value)); // Map value to axis scale
+                .defined(d => !isNaN(d.value))  // Ignore NaN values
+                .x((d) => xScale(d.axis))
+                .y((d) => yScales[d.axis](+d.value));
 
             filteredData.forEach((row, i) => {
                 const pathData = zScoreCols.map((col) => ({ axis: col, value: row[col] }));
@@ -159,10 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     .datum(pathData)
                     .attr("class", "line")
                     .attr("d", line)
-                    .attr("stroke", colors[i % colors.length]) // Assign color for each city
+                    .attr("stroke", colors[i % colors.length])
                     .attr("fill", "none")
                     .attr("stroke-width", 1.5)
-                    .attr("stroke-opacity", 0.7)
+                    .attr("stroke-opacity", d => pathData.some(p => isNaN(p.value)) ? 0.3 : 0.7)  // Reduce opacity for incomplete data
+                    .attr("stroke-dasharray", d => pathData.some(p => isNaN(p.value)) ? "4 4" : "none")  // Dashed lines for missing values
+
                     .on("mouseover", function (event, d) {
                         // Highlight the line
                         d3.select(this)
@@ -172,7 +177,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Show tooltip
                         tooltip
                             .style("display", "block")
-                            .html(`<strong>${row["NAME"]}</strong>`); // Display city name
+                            .html(`<strong>${row["NAME"]}</strong><br>
+                                ${zScoreCols.map(col => 
+                                    `${attributeNameMap[col]}: ${isNaN(row[col]) ? "No Data" : row[col]}`
+                                ).join("<br>")}`);
                     })
                     .on("mousemove", function (event) {
                         // Move tooltip with cursor
@@ -211,6 +219,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 .attr("y", 12)
                 .text((d) => d["NAME"]) // Display city names
                 .style("font-size", "12px");
+            const legendMissing = parallelSvg.append("g")
+                .attr("transform", `translate(0, ${height + 80})`);
+
+            legendMissing.append("rect")
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "lightgray")
+                .style("stroke-dasharray", "4 4");  // Dashed for missing data
+
+            legendMissing.append("text")
+                .attr("x", 20)
+                .attr("y", 12)
+                .text("Missing Data")
+                .style("font-size", "12px");
+
         }
 
         // Attach updateChart function to the "Update Global Rankings" button
