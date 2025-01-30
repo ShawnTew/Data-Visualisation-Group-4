@@ -5,17 +5,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set dynamic margins based on container size
     const margin = {
+<<<<<<< HEAD
         top: containerHeight * 0.1,    
         right: containerWidth * 0.05,  
         bottom: containerHeight * 0.2, 
         left: containerWidth * 0.05    
+=======
+        top: containerHeight * 0.1,
+        right: containerWidth * 0.05,
+        bottom: containerHeight * 0.2,
+        left: containerWidth * 0.05
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
     };
     
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
-    
+
     // Adjust SVG height to accommodate space for the legend
+<<<<<<< HEAD
     const adjustedHeight = height + 150; 
+=======
+    const adjustedHeight = height + 150;
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
     d3.select("#parallel-plot-container #parallel-plot")
         .attr("height", adjustedHeight + margin.top + margin.bottom);
 
@@ -54,8 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const yScales = {};
         zScoreCols.forEach((col) => {
             yScales[col] = d3.scaleLinear()
+<<<<<<< HEAD
                 .domain([-4, 4]) 
                 .range([height, 0]); 
+=======
+                .domain([-4, 4])
+                .range([height, 0]);
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
         });
 
 
@@ -66,7 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
             .range([0, width]);
 
         // Adjust SVG height to accommodate wrapped labels
+<<<<<<< HEAD
         const adjustedHeight = height + 100; 
+=======
+        const adjustedHeight = height + 100;
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
         d3.select("#parallel-plot-container #parallel-plot")
             .attr("height", adjustedHeight + margin.top + margin.bottom);
 
@@ -80,7 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 .call(axis);
 
             // Use the manual names for the labels
+<<<<<<< HEAD
             const cleanLabel = attributeNameMap[col] || col.replace(/z-score\s*/i, ""); 
+=======
+            const cleanLabel = attributeNameMap[col] || col.replace(/z-score\s*/i, "");
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
 
             // Add group for axis label
             const labelGroup = parallelSvg.append("g")
@@ -92,8 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 .style("font-size", "10px")
                 .style("fill", "black")
                 .style("font-weight", "bold")
+<<<<<<< HEAD
                 .text(cleanLabel)  
                 .call(wrap, 70); 
+=======
+                .text(cleanLabel)
+                .call(wrap, 70);
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
         });
 
         // Wrap function for long text
@@ -104,7 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 let word;
                 let line = [];
                 let lineNumber = 0;
+<<<<<<< HEAD
                 const lineHeight = 1.1; // Adjusting line height
+=======
+                const lineHeight = 1.1;
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
                 const x = textElement.attr("x") || 0;
                 const y = textElement.attr("y") || 0;
 
@@ -151,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Draw filtered paths
             const line = d3.line()
-                .defined(d => !isNaN(d.value))  // Ignore NaN values
+                .defined(d => !isNaN(d.value))
                 .x((d) => xScale(d.axis))
                 .y((d) => yScales[d.axis](+d.value));
 
@@ -165,8 +198,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     .attr("stroke", colors[i % colors.length])
                     .attr("fill", "none")
                     .attr("stroke-width", 1.5)
+<<<<<<< HEAD
                     .attr("stroke-opacity", d => pathData.some(p => isNaN(p.value)) ? 0.3 : 0.7)  
                     .attr("stroke-dasharray", d => pathData.some(p => isNaN(p.value)) ? "4 4" : "none")  
+=======
+                    .attr("stroke-opacity", d => pathData.some(p => isNaN(p.value)) ? 0.3 : 0.7)
+                    .attr("stroke-dasharray", d => pathData.some(p => isNaN(p.value)) ? "4 4" : "none")
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
 
                     .on("mouseover", function (event, d) {
                         // Highlight the line
@@ -185,7 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     .on("mousemove", function (event) {
                         // Move tooltip with cursor
                         tooltip
+<<<<<<< HEAD
                             .style("left", `${event.pageX + 10}px`) 
+=======
+                            .style("left", `${event.pageX + 10}px`)
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
                             .style("top", `${event.pageY}px`);
                     })
                     .on("mouseout", function () {
@@ -201,7 +243,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Update legend with filtered city names
             const legend = parallelSvg.append("g")
+<<<<<<< HEAD
                 .attr("transform", `translate(0, ${height + 50})`) 
+=======
+                .attr("transform", `translate(0, ${height + 50})`)
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
                 .selectAll(".legend-item")
                 .data(filteredData)
                 .enter()
@@ -217,7 +263,11 @@ document.addEventListener("DOMContentLoaded", () => {
             legend.append("text")
                 .attr("x", 20)
                 .attr("y", 12)
+<<<<<<< HEAD
                 .text((d) => d["NAME"]) 
+=======
+                .text((d) => d["NAME"])
+>>>>>>> 763aac0654b9acbc70905bbfcc249268673b23cf
                 .style("font-size", "12px");
             const legendMissing = parallelSvg.append("g")
                 .attr("transform", `translate(0, ${height + 80})`);
