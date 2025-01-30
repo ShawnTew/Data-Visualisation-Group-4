@@ -5,17 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set dynamic margins based on container size
     const margin = {
-        top: containerHeight * 0.1,    // 10% of container height
-        right: containerWidth * 0.05,  // 5% of container width
-        bottom: containerHeight * 0.2, // Increased bottom margin for the legend
-        left: containerWidth * 0.05    // 5% of container width
+        top: containerHeight * 0.1,    
+        right: containerWidth * 0.05,  
+        bottom: containerHeight * 0.2, 
+        left: containerWidth * 0.05    
     };
     
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
     
     // Adjust SVG height to accommodate space for the legend
-    const adjustedHeight = height + 150; // Extra space for labels and legend
+    const adjustedHeight = height + 150; 
     d3.select("#parallel-plot-container #parallel-plot")
         .attr("height", adjustedHeight + margin.top + margin.bottom);
 
@@ -48,14 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load CSV data for the parallel plot
     d3.csv("../data/combine new cities  - Output.csv").then(function (data) {
         const zScoreCols = Object.keys(data[0]).filter((col) => col.includes("z-score"));
-        const cityNames = [...new Set(data.map((d) => d["NAME"]))]; // Unique city names
+        const cityNames = [...new Set(data.map((d) => d["NAME"]))]; 
 
         // Set scales for each axis
         const yScales = {};
         zScoreCols.forEach((col) => {
             yScales[col] = d3.scaleLinear()
-                .domain([-4, 4]) // Fixed range for z-scores
-                .range([height, 0]); // Map to vertical axis
+                .domain([-4, 4]) 
+                .range([height, 0]); 
         });
 
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .range([0, width]);
 
         // Adjust SVG height to accommodate wrapped labels
-        const adjustedHeight = height + 100; // Extra space for labels
+        const adjustedHeight = height + 100; 
         d3.select("#parallel-plot-container #parallel-plot")
             .attr("height", adjustedHeight + margin.top + margin.bottom);
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .call(axis);
 
             // Use the manual names for the labels
-            const cleanLabel = attributeNameMap[col] || col.replace(/z-score\s*/i, ""); // Get the manually set label
+            const cleanLabel = attributeNameMap[col] || col.replace(/z-score\s*/i, ""); 
 
             // Add group for axis label
             const labelGroup = parallelSvg.append("g")
@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 .style("font-size", "10px")
                 .style("fill", "black")
                 .style("font-weight", "bold")
-                .text(cleanLabel)  // Use the manually set label here
-                .call(wrap, 70); // Wrap if width exceeds 70px
+                .text(cleanLabel)  
+                .call(wrap, 70); 
         });
 
         // Wrap function for long text
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let word;
                 let line = [];
                 let lineNumber = 0;
-                const lineHeight = 1.1; // Adjust line height
+                const lineHeight = 1.1; // Adjusting line height
                 const x = textElement.attr("x") || 0;
                 const y = textElement.attr("y") || 0;
 
@@ -165,8 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     .attr("stroke", colors[i % colors.length])
                     .attr("fill", "none")
                     .attr("stroke-width", 1.5)
-                    .attr("stroke-opacity", d => pathData.some(p => isNaN(p.value)) ? 0.3 : 0.7)  // Reduce opacity for incomplete data
-                    .attr("stroke-dasharray", d => pathData.some(p => isNaN(p.value)) ? "4 4" : "none")  // Dashed lines for missing values
+                    .attr("stroke-opacity", d => pathData.some(p => isNaN(p.value)) ? 0.3 : 0.7)  
+                    .attr("stroke-dasharray", d => pathData.some(p => isNaN(p.value)) ? "4 4" : "none")  
 
                     .on("mouseover", function (event, d) {
                         // Highlight the line
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     .on("mousemove", function (event) {
                         // Move tooltip with cursor
                         tooltip
-                            .style("left", `${event.pageX + 10}px`) // Offset from cursor
+                            .style("left", `${event.pageX + 10}px`) 
                             .style("top", `${event.pageY}px`);
                     })
                     .on("mouseout", function () {
@@ -201,13 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Update legend with filtered city names
             const legend = parallelSvg.append("g")
-                .attr("transform", `translate(0, ${height + 50})`) // Position below the graph
+                .attr("transform", `translate(0, ${height + 50})`) 
                 .selectAll(".legend-item")
                 .data(filteredData)
                 .enter()
                 .append("g")
                 .attr("class", "legend-item")
-                .attr("transform", (d, i) => `translate(${i * 150}, 0)`); // Position items horizontally
+                .attr("transform", (d, i) => `translate(${i * 150}, 0)`); 
 
             legend.append("rect")
                 .attr("width", 15)
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
             legend.append("text")
                 .attr("x", 20)
                 .attr("y", 12)
-                .text((d) => d["NAME"]) // Display city names
+                .text((d) => d["NAME"]) 
                 .style("font-size", "12px");
             const legendMissing = parallelSvg.append("g")
                 .attr("transform", `translate(0, ${height + 80})`);
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .attr("width", 15)
                 .attr("height", 15)
                 .attr("fill", "lightgray")
-                .style("stroke-dasharray", "4 4");  // Dashed for missing data
+                .style("stroke-dasharray", "4 4");  
 
             legendMissing.append("text")
                 .attr("x", 20)

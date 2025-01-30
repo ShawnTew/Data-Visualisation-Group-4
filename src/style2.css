@@ -1,7 +1,7 @@
 /* Universal Font for the Entire Page */
 html, body {
-    font-family: 'Arial', sans-serif; /* Set a global font (Arial in this case) */
-    background-color: #fee391; /* Light grey background */
+    font-family: 'Arial', sans-serif; 
+    background-color: #fee391; 
     margin: 0;
     padding: 0;
     width: 100%;
@@ -9,15 +9,16 @@ html, body {
 }
 /* Header Styling */
 #main-header {
-    background-color: #fe9929; /* Soft orange */
-    color: white; /* White text for contrast */
+    background-color: #fe9929; 
+    color: white; 
     text-align: center;
-    padding: 5px; /* Adds some spacing */
-    box-shadow: none; /* Removes the box shadow */
-    border: none; /* Removes any border */
-    width: 100%; /* Ensures the header takes up the full page width */
-    margin: 0; /* Removes any margin around the header */
-    box-sizing: border-box; /* Ensures padding is included in the width */
+    padding: 5px; 
+    box-shadow: none; 
+    border: none; 
+    width: 100%; 
+    margin: 0; 
+    box-sizing: border-box; 
+
 }
 
 #main-header h1{
@@ -25,59 +26,59 @@ html, body {
 }
 
 .description-section {
-    background-color: #fee391; /* Light background color */
-    padding: 15px; /* Increase the padding */
-    margin-bottom: 40px; /* Add space at the bottom */
-    font-size: 18px; /* Adjust text size if necessary */
-    border-radius: 10px; /* Rounded corners for a smooth look */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for some depth */
+    background-color: #fee391; 
+    padding: 15px; 
+    margin-bottom: 40px; 
+    font-size: 18px; 
+    border-radius: 10px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 
 /* Main Container Styling */
 .main-container {
-    display: flex; /* Create a flexible layout */
-    gap: 20px; /* Add space between the columns */
-    margin: 20px; /* Add some margin around the container */
+    display: flex; 
+    gap: 20px; 
+    margin: 20px; 
 }
 
 /* Left Column Styling */
 .left-column {
-    flex: 1; /* Take up equal space */
-    background-color: #f9f9f9; /* Light background for separation */
-    padding: 15px; /* Inner padding */
-    box-shadow: none; /* Subtle shadow */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 8px; /* Smooth corners */
+    flex: 1; 
+    background-color: #f9f9f9; 
+    padding: 15px; 
+    box-shadow: none; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
 }
 
 /* Right Column Styling */
 .right-column {
-    flex: 1; /* Take up equal space */
-    background-color: #f9f9f9; /* A grey for contrast */
-    padding: 15px; /* Inner padding */
-    box-shadow: none; /* Subtle shadow */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 8px; /* Smooth corners */
+    flex: 1; 
+    background-color: #f9f9f9; 
+    padding: 15px; 
+    box-shadow: none; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
 }
 
 /* Distance Filter: Full Container Fit */
 #distance-filter {
     display: flex;
-    flex-direction: column; /* Arrange elements vertically */
-    justify-content: space-between; /* Spread items evenly */
-    align-items: stretch; /* Stretch children to container's width */
-    width: 100%; /* Full width of the parent container */
-    height: 100%; /* Full height of the parent container */
-    background-color: #f9f9f9; /* Light background for contrast */
-    padding: 20px; /* Inner spacing */
-    box-sizing: border-box; /* Ensure padding doesn't overflow */
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: stretch; 
+    width: 100%; 
+    height: 100%;
+    background-color: #f9f9f9; 
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 /* Results Section */
 #results {
     flex-grow: 1; /* Allow the results section to expand */
-    overflow: hidden; /* Prevent content overflow */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -89,14 +90,14 @@ html, body {
     overflow-y: auto; /* Add scroll for large content */
     border: 1px solid #ddd;
     background-color: #fff;
-    border-radius: 5px; /* Smooth corners */
+    border-radius: 5px; 
     box-sizing: border-box;
 }
 
 /* Table Styling */
 #results table {
-    width: 100%; /* Full width */
-    height: 100%; /* Take up all available height */
+    width: 100%; 
+    height: 100%; 
     border-collapse: collapse;
 }
 
@@ -124,7 +125,7 @@ html, body {
     padding: 10px;
     font-size: 14px;
     cursor: pointer;
-    width: 100%; /* Full width */
+    width: 100%; 
     transition: background-color 0.3s ease;
 }
 
@@ -135,35 +136,35 @@ html, body {
 /* Parallel Plot and Widgets Container */
 #main-container {
     display: flex; /* Set up a horizontal flex layout */
-    gap: 20px; /* Add space between the two columns */
-    margin: 20px auto; /* Add some margin and center align */
-    padding: 10px; /* Add padding around the container */
+    gap: 20px; 
+    margin: 20px auto; 
+    padding: 10px; 
     box-sizing: border-box;
 }
 
 /* Parallel Plot Container */
 #parallel-plot-container {
     flex: 2; /* Take up more space than widgets */
-    background-color: #f9f9f9; /* Light background for contrast */
-    padding: 15px; /* Inner padding */
-    border-radius: 8px; /* Smooth corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    overflow: hidden; /* Prevent content overflow */
+    background-color: #f9f9f9; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
 }
 
 /* SVG Styling for Parallel Plot */
 #parallel-plot {
     width: 100%;
-    height: 500px; /* Fixed height for the plot */
+    height: 500px; 
 }
 
 /* Widgets Container */
 #widgets-container {
     flex: 1; /* Take up less space than the plot */
-    background-color: #f9f9f9; /* Light grey background */
-    padding: 15px; /* Inner padding */
-    border-radius: 8px; /* Smooth corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #f9f9f9; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -171,12 +172,12 @@ html, body {
 
 /* Widgets Content Styling */
 #widgets {
-    flex-grow: 1; /* Allow widgets section to expand */
-    overflow-y: auto; /* Add scroll if content overflows */
+    flex-grow: 1; 
+    overflow-y: auto; 
 }
 
 #buttons-container {
-    margin-top: 20px; /* Add spacing at the bottom */
+    margin-top: 20px; 
 }
 
 /* Bar Plot Styling */
@@ -185,11 +186,11 @@ html, body {
     max-width: 90%;
     margin: 20px auto; /* Center the bar plot */
     padding: 20px;
-    background-color: #f9f9f9; /* Light background for contrast */
-    border-radius: 8px; /* Smooth corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
-    margin-bottom: 40px; /* Add space below the bar plot */
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow-x: auto; 
+    margin-bottom: 40px; 
 
 }
 
@@ -202,13 +203,13 @@ html, body {
 }
 
 .axis text {
-    font-size: 12px; /* Increase axis font size */
+    font-size: 12px; 
     fill: #333;
 }
 
 .x-axis text {
-    transform: rotate(-45deg); /* Rotate x-axis labels */
-    text-anchor: end; /* Align rotated labels */
+    transform: rotate(-45deg); 
+    text-anchor: end; 
 }
 
 /* Gridlines */
@@ -250,49 +251,49 @@ html, body {
 
 /* Apply styles to the table */
 .styled-table {
-    width: 80%; /* Adjust width of the table */
-    margin: 20px auto; /* Center the table */
-    border-collapse: collapse; /* Remove spacing between borders */
-    background-color: white; /* White background for the table */
+    width: 80%; 
+    margin: 20px auto; 
+    border-collapse: collapse; 
+    background-color: white; 
 }
 
 /* Style the header row */
 .styled-table th {
-    background-color: #f2b13b; /* Fill header with soft yellow-orange */
-    color: white; /* White text for header */
-    text-align: left; /* Left-align header text */
-    padding: 12px 15px; /* Add padding to the header */
-    font-size: 14px; /* Slightly smaller font for header */
+    background-color: #f2b13b; 
+    color: white; 
+    text-align: left; 
+    padding: 12px 15px; 
+    font-size: 14px;
 }
 
 /* Style the table rows */
 .styled-table td {
-    padding: 8px 15px; /* Add padding to table cells */
-    text-align: left; /* Align text to the left */
-    border-bottom: 1px solid #ddd; /* Add bottom border for each row */
+    padding: 8px 15px; 
+    text-align: left; 
+    border-bottom: 1px solid #ddd; 
 }
 
 /* Add a border around the table */
 .styled-table, .styled-table th, .styled-table td {
-    border: 1px solid #ccc; /* Light gray border */
+    border: 1px solid #ccc; 
 }
 
 /* Add hover effect on table rows */
 .styled-table tr:hover {
-    background-color: #f1f1f1; /* Change row color on hover */
+    background-color: #f1f1f1; 
 }
 
 /* Title for the sources section */
 #sources-title {
-    text-align: center; /* Center the title */
-    font-size: 24px; /* Adjust font size */
-    font-weight: bold; /* Make title bold */
-    margin-bottom: 20px; /* Add space below the title */
+    text-align: center; 
+    font-size: 24px;
+    font-weight: bold; 
+    margin-bottom: 20px; 
 }
 
 /* Optional: Make columns responsive */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .main-container {
-        flex-direction: column; /* Stack columns on smaller screens */
+        flex-direction: column;
     }
-}
+} */

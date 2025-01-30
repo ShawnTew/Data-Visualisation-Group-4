@@ -17,14 +17,14 @@ const shortNames = [
 d3.csv(dataFile).then(data => {
     data.forEach(d => {
         columns.forEach(column => {
-            d[column] = +d[column]; // Convert to number
+            d[column] = +d[column]; 
             if (isNaN(d[column])) {
-                d[column] = -5; // Handle missing or invalid values
+                d[column] = -5; 
             }
         });
     });
 
-    const width = 350; // Adjust the width as needed
+    const width = 350; // Adjustig the width as needed
     const height = width;
     const margin = 10;
     const outerRadius = width / 2 - margin;
@@ -42,15 +42,15 @@ d3.csv(dataFile).then(data => {
 
     data.forEach(d => {
         const svg = d3.select("#chart").append("svg")
-            .attr("class", "radar-chart-svg") // Add a specific class
-            .attr("viewBox", `0 0 ${width * 2} ${height * 2}`) // Increase viewBox size
+            .attr("class", "radar-chart-svg") // Adding a specific class
+            .attr("viewBox", `0 0 ${width * 2} ${height * 2}`) // Increased viewBox size here
             .attr("preserveAspectRatio", "xMidYMid meet")
             .attr("style", "width: 100%; height: auto; max-width: 300px; max-height: 300px; display: block; margin: auto; font: 10px sans-serif;")
             .attr("stroke-linejoin", "round")
             .attr("stroke-linecap", "round");
 
         const g = svg.append("g")
-            .attr("transform", `translate(${width}, ${height}) scale(1.5)`); // Scale down the glyph
+            .attr("transform", `translate(${width}, ${height}) scale(1.5)`); 
 
         const path = g.append("path")
             .datum(d) // Bind data to the path

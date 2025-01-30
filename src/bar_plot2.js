@@ -83,8 +83,8 @@
             .attr("transform", `translate(0,${height})`)
             .call(d3.axisBottom(x0).tickSize(0))
             .selectAll("text")
-            .attr("transform", "rotate(-30)") // Rotate x-axis labels
-            .attr("dy", "0.7em") // Move label slightly down
+            .attr("transform", "rotate(-30)") 
+            .attr("dy", "0.7em") 
             .style("font-size", "14px")
             .style("text-anchor", "end");
 
@@ -94,13 +94,13 @@
 
         // Add axis labels
         const yAxisLabel = svg.append("text")
-            .attr("transform", "rotate(-90)") // Rotate the text for vertical alignment
-            .attr("y", margin.left / 1 - 15) // Adjust position based on left margin
-            .attr("x", -height / 2) // Center along the y-axis
-            .attr("dy", "-1em") // Move slightly left
-            .style("text-anchor", "middle") // Center text horizontally
-            .style("font-size", "14px") // Font size for the label
-            .text("Z-Scores"); // Text for the y-axis
+            .attr("transform", "rotate(-90)") 
+            .attr("y", margin.left / 1 - 15) 
+            .attr("x", -height / 2) 
+            .attr("dy", "-1em") 
+            .style("text-anchor", "middle") 
+            .style("font-size", "14px") 
+            .text("Z-Scores"); 
 
         const xAxisLabel = svg.append("text")
             .attr("x", width / 2)
@@ -124,8 +124,8 @@
             .attr("class", "grid")
             .call(
                 d3.axisLeft(y)
-                    .tickSize(-width) // Extend gridlines across the chart
-                    .tickFormat("") // Hide tick labels
+                    .tickSize(-width) 
+                    .tickFormat("") 
             )
             .selectAll("line")
             .attr("stroke", "#ddd")
@@ -222,7 +222,7 @@
 
             legendRow.append("span")
                 .style("font-size", "12px")
-                .text(attributeNameMap[s.name] || s.name);  // Use map to format the name
+                .text(attributeNameMap[s.name] || s.name); 
         });
     });
 })();

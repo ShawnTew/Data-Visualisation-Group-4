@@ -3,7 +3,6 @@ let globalRankings = [];
 
 // Load CSV file
 d3.csv("../data/combine new cities  - Output.csv").then(data => {
-    // Dynamically filter z-score columns (case-insensitive)
     const zScoreColumns = Object.keys(data[0]).filter(col => /z-score/i.test(col));
 
     // Extract the city names
@@ -22,9 +21,8 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
         "No. of Students": []
     };
 
-    // Prepare data for each z-score column with new attribute names (matching the legend)
+    // PreparING data for each z-score column with new attribute names (TO MATCH THE LEGEND)
     zScoreColumns.forEach((col, index) => {
-        // Extract new labels manually based on your naming convention
         const newLabel = Object.keys(attributeData)[index];
         attributeData[newLabel] = data.map((d, i) => ({
             value: +d[col],   // Z-score value
@@ -100,7 +98,7 @@ d3.csv("../data/combine new cities  - Output.csv").then(data => {
 
         // Y Scale: Include both positive and negative values
         const yScale = d3.scaleLinear()
-            .domain([d3.min(values, d => d.value), d3.max(values, d => d.value)]) // Account for negatives
+            .domain([d3.min(values, d => d.value), d3.max(values, d => d.value)]) // Accounting for negatives
             .range([50, 0]);
 
         // Draw bars: one bar per city
