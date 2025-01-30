@@ -2,7 +2,7 @@
 let globalRankings = [];
 
 // Load CSV file
-d3.csv("../data/combine new cities  - Output.csv").then(data => {
+d3.csv("../data/data_file.csv").then(data => {
     const zScoreColumns = Object.keys(data[0]).filter(col => /z-score/i.test(col));
 
     // Extract the city names

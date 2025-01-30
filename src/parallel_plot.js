@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Load CSV data for the parallel plot
-    d3.csv("../data/combine new cities  - Output.csv").then(function (data) {
+    d3.csv("../data/data_file.csv").then(function (data) {
         const zScoreCols = Object.keys(data[0]).filter((col) => col.includes("z-score"));
         const cityNames = [...new Set(data.map((d) => d["NAME"]))]; 
 
